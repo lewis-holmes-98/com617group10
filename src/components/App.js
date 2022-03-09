@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
-const App = () => {
-    return (
-        <Router>
-            <div>
-                <h1>Test</h1>
+class App extends React.Component {
+    render() {
+        return (
+            <div className="App">
+                <h1 className="text-3xl font-bold underline">TEST</h1>
             </div>
-        </Router>
-    );
+        )
+    }
 }
 
 export default App; 

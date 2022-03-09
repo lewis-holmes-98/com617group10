@@ -1,2 +1,8 @@
 # com617group10
-bababooey
+## Seeder
+Seeds using data from the /data folder.
+
+Predictions made using the score column in the data.
+
+<img src="/img/example_prediction.png" width="300"> 
+<img src="/img/example_prediction2.png" width="300"> 

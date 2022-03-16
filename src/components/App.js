@@ -5,9 +5,9 @@ import Header from './header'
 class App extends React.Component {
     render() {
         return (
-            
-                <Header />
-            
+
+            <Header />
+
         )
     }
 }

@@ -1,0 +1,32 @@
+{
+  "name": "com617group10",
+  "version": "1.0.0",
+  "description": "Seeding Atlas database",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "seedProduction": "cross-env NODE_ENV=production node seeder.js",
+    "seed": "node seeder.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewis-holmes-98/com617group10.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lewis-holmes-98/com617group10/issues"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "homepage": "https://github.com/lewis-holmes-98/com617group10#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.6",
+    "loading-cli": "^1.1.0"
+  }
+}

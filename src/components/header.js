@@ -2,6 +2,19 @@
 
 import React from 'react'
 
+
+const showMobileMenu = $(document).ready(function () {
+    const btn = document.querySelector("button.mobile-menu-button")
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+
+});
+
+
+
 function Header() {
     return (
         <div>
@@ -49,10 +62,10 @@ function Header() {
 
                 <div className="hidden mobile-menu">
                     <ul className="">
-                        <li className="active"><a href="index.html" className="block text-sm px-2 py-4 text-white bg-slate-500 font-semibold">Home</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Map</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Weather</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Contact Us</a></li>
+                        <li className="active"><a href="index.html" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">Home</a></li>
+                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Map</a></li>
+                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Weather</a></li>
+                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Contact Us</a></li>
                     </ul>
                 </div>
             </nav>

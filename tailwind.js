@@ -1,6 +1,6 @@
 module.exports = {
   content: ["./src/**/*.{html,js}",
-            "./components/**/*.{html,js}"
+    "./components/**/*.{html,js}"
   ],
   presets: [],
   darkMode: 'media', // or 'class'
@@ -13,6 +13,7 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: ({ colors }) => ({
+      'grey-blue': '#3b5167',
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,

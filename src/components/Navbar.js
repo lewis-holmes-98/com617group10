@@ -1,21 +1,7 @@
-// src/components/header.js
+import React from 'react';
+import { Link } from "react-router-dom";
 
-import React from 'react'
-
-
-const showMobileMenu = $(document).ready(function () {
-    const btn = document.querySelector("button.mobile-menu-button")
-    const menu = document.querySelector(".mobile-menu");
-
-    btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-    });
-
-});
-
-
-
-function Header() {
+const Navbar = () => {
     return (
         <div>
             <nav className="bg-slate-500 shadow-lg">
@@ -24,13 +10,13 @@ function Header() {
                         <div className="flex space-x-7">
                             <div>
 
-                                <a href="#" className="flex items-center py-4 px-2">
+                                <Link to="/" className="flex items-center py-4 px-2">
                                     <span className="font-semibold text-white text-lg">Snowcore</span>
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="hidden md:flex items-center space-x-1">
-                                <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">Home</a>
+                                <Link to="/" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">Home</Link>
                                 <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Map</a>
                                 <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Weather</a>
                                 <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Contact Us</a>
@@ -38,8 +24,8 @@ function Header() {
                         </div>
 
                         <div className="hidden md:flex items-center space-x-3 ">
-                            <a href="" className="py-2 px-2 font-medium text-white rounded hover:bg-sky-100 hover:text-gray-600 transition duration-300">Log In</a>
-                            <a href="" className="py-2 px-2 font-medium text-gray-600 rounded bg-sky-100 hover:bg-slate-500 hover:text-white transition duration-300">Sign Up</a>
+                            <Link to="/Login" className="py-2 px-2 font-medium text-white rounded hover:bg-sky-100 hover:text-gray-600 transition duration-300">Log In</Link>
+                            <Link to="/Signup" className="py-2 px-2 font-medium text-gray-600 rounded bg-sky-100 hover:bg-slate-500 hover:text-white transition duration-300">Sign Up</Link>
                         </div>
 
                         <div className="md:hidden flex items-center">
@@ -73,4 +59,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Navbar

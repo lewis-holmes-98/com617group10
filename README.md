@@ -9,4 +9,8 @@ Predictions made using the score column in the data.
 
 # Setup
 1. `npm install`
-2. `npm run seed` (use `npm run seedProduction` for production database)
+2. `npm run dev`
+
+
+
+3. `npm run seed` (use `npm run seedProduction` for production database)

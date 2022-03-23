@@ -1,2 +1,12 @@
 # com617group10
-Group 10 for com617
+## Seeder
+Seeds using data from the /data folder.
+
+Predictions made using the score column in the data.
+
+<img src="/img/example_prediction.png" width="300"> 
+<img src="/img/example_prediction2.png" width="300"> 
+
+# Setup
+1. `npm install`
+2. `npm run seed` (use `npm run seedProduction` for production database)

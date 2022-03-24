@@ -4,6 +4,7 @@ import '../styles/main.css';
 import Navbar from './Navbar';
 import Login from './Login';
 import Home from './Home';
+import Signup from "./Signup";
 import NotFound from "./NotFound";
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
                         </Route>
                         <Route path="/login">
                             <Login />
+                        </Route>
+                        <Route path="/signup">
+                            <Signup />
                         </Route>
                         <Route path="*">
                             <NotFound />

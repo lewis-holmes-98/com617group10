@@ -48,10 +48,12 @@ const Navbar = () => {
 
                 <div className="hidden mobile-menu">
                     <ul className="">
-                        <li className="active"><Link to="/" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">Home</Link></li>
+                        <li><Link to="/" className="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">Home</Link></li>
                         <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Map</Link></li>
                         <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Weather</Link></li>
                         <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Contact Us</Link></li>
+                        <li><Link to="/Login" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Log In</Link></li>
+                        <li><Link to="/Signup" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Sign Up</Link></li>
                     </ul>
                 </div>
             </nav>

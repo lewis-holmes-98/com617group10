@@ -43,7 +43,6 @@ function Login() {
     }
 
     return (
-
         <div className="container mx-auto pt-10">
             <form onSubmit={handleFormSubmit} className=" bg-slate-500">
                 <div>

@@ -43,29 +43,32 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            <div>
-                <div className="mb-4">
-                    <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-                    <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@email.com" required />
-                </div>
-                <div className="mb-6">
-                    <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
-                    <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
-                </div>
-                <div className="flex items-start mb-6">
-                    <div className="flex items-center h-5">
-                        <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+
+        <div className="container mx-auto pt-10">
+            <form onSubmit={handleFormSubmit} className=" bg-slate-500">
+                <div>
+                    <div className="mb-4 px-5 pt-5">
+                        <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@email.com" required />
                     </div>
-                    <div className="ml-3 text-sm">
-                        <label for="remember" className="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                    <div className="mb-6 px-5">
+                        <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
+                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
                     </div>
+                    <div className="flex items-start mb-6 px-5">
+                        <div className="flex items-center h-5">
+                            <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                        </div>
+                        <div className="ml-3 text-sm px-5">
+                            <label for="remember" className="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                        </div>
+                    </div>
+                    <button type="submit" className="py-4 px-5 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">
+                        Submit
+                    </button>
                 </div>
-                <button type="submit" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">
-                    Submit
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 
     // const formLogic = $(document).ready(function () {

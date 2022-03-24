@@ -17,9 +17,9 @@ const Navbar = () => {
 
                             <div className="hidden md:flex items-center space-x-1">
                                 <Link to="/" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">Home</Link>
-                                <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Map</a>
-                                <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Weather</a>
-                                <a href="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Contact Us</a>
+                                <Link to="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Map</Link>
+                                <Link to="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Weather</Link>
+                                <Link to="" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Contact Us</Link>
                             </div>
                         </div>
 
@@ -48,10 +48,10 @@ const Navbar = () => {
 
                 <div className="hidden mobile-menu">
                     <ul className="">
-                        <li className="active"><a href="index.html" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">Home</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Map</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Weather</a></li>
-                        <li><a href="#" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Contact Us</a></li>
+                        <li className="active"><Link to="/" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">Home</Link></li>
+                        <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Map</Link></li>
+                        <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Weather</Link></li>
+                        <li><Link to="" className="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">Contact Us</Link></li>
                     </ul>
                 </div>
             </nav>

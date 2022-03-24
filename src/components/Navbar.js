@@ -23,7 +23,7 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <div className="hidden md:flex items-center space-x-3 ">
+                        <div className="hidden md:flex items-center space-x-3">
                             <Link to="/Login" className="py-2 px-2 font-medium text-white rounded hover:bg-sky-100 hover:text-gray-600 transition duration-300">Log In</Link>
                             <Link to="/Signup" className="py-2 px-2 font-medium text-gray-600 rounded bg-sky-100 hover:bg-slate-500 hover:text-white transition duration-300">Sign Up</Link>
                         </div>

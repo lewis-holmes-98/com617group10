@@ -1,4 +1,5 @@
 import React, { useReducer, useState, Component } from "react";
+import { validate } from "schema-utils";
 import "../styles/tailwind.css"
 
 const showMobileMenu = $(document).ready(function () {
@@ -42,17 +43,32 @@ function Login() {
         // }
     }
 
+    // const formLogic = $(document).ready(function () {
+    //     const validateLogin = () {
+    //         const charRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    //         return email.length > 0 && password.length > 0 && email.match(charRegex);
+    //     }
+    // })
+
     return (
         <div className="container mx-auto pt-10">
             <form onSubmit={handleFormSubmit} className=" bg-slate-500">
                 <div>
                     <div className="mb-4 px-5 pt-5">
                         <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@email.com" required />
+                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@email.com" required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+
+                        
                     </div>
                     <div className="mb-6 px-5">
                         <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
-                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
+                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     <div className="flex items-start mb-6 px-5">
                         <div className="flex items-center h-5">
@@ -62,21 +78,15 @@ function Login() {
                             <label for="remember" className="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                         </div>
                     </div>
-                    <button type="submit" className="py-4 px-5 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">
-                        Submit
+                    <button type="submit" className="py-4 px-5 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 "
+                        disabled={!validateForm()}    
+                    >
+                        Login
                     </button>
                 </div>
             </form>
         </div>
     )
-
-    // const formLogic = $(document).ready(function () {
-    //     const validateLogin = () {
-    //         const charRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    //         return email.length > 0 && password.length > 0 && email.match(charRegex);
-    //     }
-    // })
-
 }
 
 export default Login

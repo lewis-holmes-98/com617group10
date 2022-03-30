@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../styles/main.css';
-import Navbar from './Navbar';
-import Login from './Login';
-import Home from './Home';
-import Signup from "./Signup";
-import NotFound from "./NotFound";
+import Navbar from './Navbar.jsx';
+import Map from './Map.jsx'
+import Weather from "./Weather.jsx";
+import Contact from "./contact.jsx";
+import Login from './Login.jsx';
+import Home from './Home.jsx';
+import Signup from "./Signup.jsx";
+import NotFound from "./NotFound.jsx";
 
 function App() {
     return (
@@ -23,6 +26,15 @@ function App() {
                         <Route path="/signup">
                             <Signup />
                         </Route>
+                        <Route path="/map">
+                            <Map />
+                        </Route>
+                        <Route path="/weather">
+                            <Weather />
+                        </Route>
+                        <Route path="/contact">
+                            <Contact />
+                        </Route>
                         <Route path="*">
                             <NotFound />
                         </Route>
@@ -31,7 +43,6 @@ function App() {
             </div>
         </Router>
     )
-
 }
 
 export default App; 

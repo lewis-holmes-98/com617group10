@@ -3,7 +3,7 @@ import React from "react";
 
 function Home() {
     return (
-        <div className="container md mx-auto pt-6">
+        <div className="container flex-initial w-64 pt-6">
             <div>
                 <p className='text-gray-600'>Welcome</p>
             </div>

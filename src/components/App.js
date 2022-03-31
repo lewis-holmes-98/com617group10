@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import '../styles/main.css';
 import Navbar from './Navbar.jsx';
 import AppLayout from "./AppLayout.jsx";
@@ -10,39 +10,29 @@ import Login from './Login.jsx';
 import Home from './Home.jsx';
 import Signup from "./Signup.jsx";
 import NotFound from "./NotFound.jsx";
+import { Sidebar } from "semantic-ui-react";
 
 function App() {
     return (
-        <Router>
-            <div className="App">
+        <BrowserRouter>
+        <div className="App">
                 <Navbar />
-                <div className="content">
-                    <Switch>
-                        <Route exact path="/">
-                            <AppLayout />
-                        </Route>
-                        <Route path="/login">
-                            <Login />
-                        </Route>
-                        <Route path="/signup">
-                            <Signup />
-                        </Route>
-                        <Route path="/map">
-                            <Map />
-                        </Route>
-                        <Route path="/weather">
-                            <Weather />
-                        </Route>
-                        <Route path="/contact">
-                            <Contact />
-                        </Route>
-                        <Route path="*">
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                </div>
+                <Sidebar />
+            <div className="content">
+                <Routes>
+                    <Route>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/map" element={<Map />} />
+                        <Route path="/weather" element={<Weather />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
             </div>
-        </Router>
+        </div>
+        </BrowserRouter>
     )
 }
 

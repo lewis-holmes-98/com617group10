@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "semantic-ui-react";
+import Sidebar from "./Sidebar.jsx";
 
 const AppLayout = () => {
     return <div style={{

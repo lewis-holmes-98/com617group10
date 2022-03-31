@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../styles/main.css';
 import Navbar from './Navbar.jsx';
-import Sidebar from "./Sidebar.jsx";
+import AppLayout from "./AppLayout.jsx";
 import Map from './Map.jsx'
 import Weather from "./Weather.jsx";
 import Contact from "./Contact.jsx";
@@ -19,7 +19,7 @@ function App() {
                 <div className="content">
                     <Switch>
                         <Route exact path="/">
-                            <Home />
+                            <AppLayout />
                         </Route>
                         <Route path="/login">
                             <Login />

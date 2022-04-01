@@ -16,8 +16,7 @@ function App() {
     return (
         <BrowserRouter>
         <div className="App">
-                <Navbar />
-                <Sidebar />
+                <AppLayout />
             <div className="content">
                 <Routes>
                     <Route>

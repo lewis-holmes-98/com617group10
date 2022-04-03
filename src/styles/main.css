@@ -497,10 +497,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.5rem;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
 .w-full {
   width: 100%;
 }
@@ -513,12 +509,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 72rem;
 }
 
-.flex-initial {
-  flex: 0 1 auto;
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -547,6 +547,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -573,6 +577,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .bg-slate-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
@@ -588,12 +597,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
 }
 
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
 .p-2\.5 {
   padding: 0.625rem;
 }
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .px-5 {
@@ -604,11 +628,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .px-2 {
@@ -631,10 +650,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .pt-10 {
@@ -781,6 +796,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   .dark\:focus\:ring-blue-500:focus {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+  }
+}
+
+@media (min-width: 640px) {
+
+  .sm\:flex-row {
+    flex-direction: row;
   }
 }
 

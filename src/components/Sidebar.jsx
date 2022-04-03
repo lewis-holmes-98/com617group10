@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const sidebarNavItems = [
     {
         display: 'Map',
@@ -76,7 +75,7 @@ const Sidebar = () => {
     }, [location]);
 
     return <div className='sidebar'>
-        <div ref={sidebarRef} className="sidebar__menu">
+        <div ref={sidebarRef} className="sidebar__menu ">
             <div
                 ref={indicatorRef}
                 className="sidebar__menu__indicator"
@@ -87,7 +86,7 @@ const Sidebar = () => {
             {
                 sidebarNavItems.map((item, index) => (
                     <Link to={item.to} key={index}>
-                        <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                        <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''} py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 `}>
                             <div className="sidebar__menu__item__icon">
                                 {item.icon}
                             </div>

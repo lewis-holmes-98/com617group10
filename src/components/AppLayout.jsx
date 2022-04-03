@@ -1,31 +1,56 @@
 import { Outlet } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from "./Sidebar.jsx";
 import BodyWrapper from "./BodyWrapper.jsx";
 import Navbar from "./Navbar.jsx";
+import Home from "./Home.jsx";
+import Map from './Map.jsx'
+import Weather from "./Weather.jsx";
+import Contact from "./Contact.jsx";
+import Login from './Login.jsx';
+import Signup from "./Signup.jsx";
+import NotFound from "./NotFound.jsx";
+import '../styles/main.css';
 
 const AppLayout = ({children}) => {
     return (
-        <BodyWrapper>
-            <div className="position fixed">
-                <Navbar />
-            </div>
-            <div className="flex h-screen bg-gray-200">
-                <Sidebar />
-                <Outlet />
-                <div className="flex flex-col flex-1 overflow-hidden">
-                    <main className="content">
-                        <section className="sm:flex-row flex flex-col flex-1">
-                            <div
-                                className="content-box"
-                                style={{ flexGrow: 2, flexBasis: "0%" }}
-                            >
-                                {children}
-                            </div>
-                        </section>
-                    </main>
+        <BrowserRouter>
+            <BodyWrapper>
+                <div className="">
+                    <Navbar />
                 </div>
-            </div>
-        </BodyWrapper>
+                <div className="flex bg-gray-200">
+                    <Sidebar />
+                    <Outlet />
+                    <div className="">
+                        <Routes>
+                            <Route>
+                                <Route path="/" element={<Home />}/>
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/signup" element={<Signup />} />
+                                <Route path="/map" element={<Map />} />
+                                <Route path="/weather" element={<Weather />} />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="*" element={<NotFound />} />
+                            </Route>
+                        </Routes>
+                    </div>
+                    <div className="flex flex-col flex-1 overflow-hidden">
+                        <main className="content">
+                            <section className="sm:flex-row flex flex-col flex-1">
+                                <div
+                                    className="content-box"
+                                    style={{ flexGrow: 2, flexBasis: "0%" }}
+                                >
+                                    {children}
+                                </div>
+                            </section>
+                        </main>
+                    </div>
+                </div>
+            </BodyWrapper>
+        </BrowserRouter>
     )
 };
 

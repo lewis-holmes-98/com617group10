@@ -1,5 +1,5 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
-import React, { Component } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from "./Sidebar.jsx";
 import BodyWrapper from "./BodyWrapper.jsx";
@@ -11,9 +11,10 @@ import Contact from "./Contact.jsx";
 import Login from './Login.jsx';
 import Signup from "./Signup.jsx";
 import NotFound from "./NotFound.jsx";
+import Modal from "./Modal.jsx";
 import '../styles/main.css';
 
-const AppLayout = ({children}) => {
+const AppLayout = ({ children }) => {
     return (
         <BrowserRouter>
             <BodyWrapper>
@@ -23,11 +24,11 @@ const AppLayout = ({children}) => {
                 <div className="flex bg-gray-200">
                     <Sidebar />
                     <Outlet />
-                    <div className="">
+                    <div className="mx-auto">
                         <Routes>
                             <Route>
-                                <Route path="/" element={<Home />}/>
-                                <Route path="/login" element={<Login />} />
+                                <Route path="/" element={<Home />} />
+                                <Route path="/login" element={<Modal />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/map" element={<Map />} />
                                 <Route path="/weather" element={<Weather />} />
@@ -36,7 +37,7 @@ const AppLayout = ({children}) => {
                             </Route>
                         </Routes>
                     </div>
-                    <div className="flex flex-col flex-1 overflow-hidden">
+                    <div className="flex overflow-hidden">
                         <main className="content">
                             <section className="sm:flex-row flex flex-col flex-1">
                                 <div

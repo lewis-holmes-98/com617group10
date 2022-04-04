@@ -1,4 +1,4 @@
-import React, { useReducer, useState, Component } from "react";
+import React, { useReducer, useState, Component, useEffect, useMemo, useCallback } from "react";
 import { validate } from "schema-utils";
 import "../styles/tailwind.css"
 
@@ -12,6 +12,8 @@ const showMobileMenu = $(document).ready(function () {
 });
 
 function Login() {
+
+    const [show, setShow] = useState(false)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errMsg, setErrMsg] = useState("");
@@ -51,7 +53,7 @@ function Login() {
     // })
 
     return (
-        <div className="container mx-auto pt-10">
+        <div className="">
             <form onSubmit={handleFormSubmit} className=" bg-slate-500">
                 <div>
                     <div className="mb-4 px-5 pt-5">

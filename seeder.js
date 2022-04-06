@@ -38,7 +38,7 @@ async function main() {
       updateUsers.forEach(async ({_id,password}) => {
 
         const hash = await bcrypt.hash(password, 10);
-        const hashedPass = "b" + hash;
+        const hashedPass = " " + hash; // cannot use $ for the first value
 
         await db.collection("users").updateOne({_id: _id}, [
           { 

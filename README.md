@@ -20,4 +20,3 @@ TODO: include recalc of rolling average for score
 
 TODO: Calc best 6 week window every day
 TODO: update score every day
-TODO: create some default admin users

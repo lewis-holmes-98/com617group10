@@ -10,7 +10,7 @@ const userSchema = new Schema(
         email: { type: String, required: [true, 'Please provide an email address.'], index: { unique: true } },
         emailOptIn: {type: Boolean},
         //profilePic: {type: Buffer},
-        userType: {type: String},
+        isAdmin: {type: Boolean},
         favourites: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Resort"

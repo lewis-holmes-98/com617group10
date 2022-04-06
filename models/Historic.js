@@ -15,7 +15,8 @@ const historicSchema = new Schema(
         fog_mean: {type: Number},
         score: {type: Number},
         count: {type: Number},
-        resort: {
+        resort: {type:String},
+        resort_id: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Resort"
         },

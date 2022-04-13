@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const historicSchema = new Schema(
     {
         dayofyear: {type:String},
-        name: {type:String},
+        //name: {type:String},
         hourlytime_mean: {type: Number},
         avgtempC_mean: {type: Number},
         totalSnow_cm_mean: {type: Number},
@@ -13,6 +13,7 @@ const historicSchema = new Schema(
         sleet_mean: {type: Number},
         snow_mean: {type: Number},
         fog_mean: {type: Number},
+        snow_ma: {type: Number},
         score: {type: Number},
         count: {type: Number},
         resort: {type:String},

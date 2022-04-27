@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Weather = () => {
+
+    resorts.array.forEach(resort => {
+        <p>resort.name</p>
+    });
+
     return (
         <div className="container mx-auto pt-6">
             <div className="not-implemented">

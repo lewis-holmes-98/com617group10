@@ -12,6 +12,7 @@ import Login from './Login.jsx';
 import Signup from "./Signup.jsx";
 import NotFound from "./NotFound.jsx";
 import Modal from "./Modal.jsx";
+
 import '../styles/main.css';
 
 const AppLayout = ({ children }) => {

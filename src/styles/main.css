@@ -652,10 +652,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.5rem;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
-}
-
 .text-justify {
   text-align: justify;
 }

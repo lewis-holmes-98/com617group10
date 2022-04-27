@@ -9,6 +9,7 @@ Predictions made using the score column in the data.
 
 # Setup
 1. `npm install`
+
 2. `npm run seed` (use `npm run seedProduction` for production database)
 3. Remove empty space from hashed passwords in database.
 
@@ -21,3 +22,7 @@ TODO: include recalc of rolling average for score
 
 TODO: Calc best 6 week window every day
 TODO: update score every day
+
+2. `npm run dev`
+3. `npm run seed` (use `npm run seedProduction` for production database)
+

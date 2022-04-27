@@ -1,26 +1,22 @@
 {
-  "name": "com617group10",
+  "name": "snowcore-skiing",
   "version": "1.0.0",
-  "description": "Seeding Atlas database",
-  "main": "index.js",
+  "description": "Group project for the development of a skiing weather app",
   "scripts": {
-    "dev": "nodemon app.js",
-    "seedProduction": "cross-env NODE_ENV=production node seeder.js",
+    "dev": "npm run run:css && webpack serve",
+    "build": "webpack",
     "seed": "node seeder.js",
-    "start": "node app.js"
+    "run:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "build:css": "postcss src/styles/tailwind.css -o dist/main.css"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lewis-holmes-98/com617group10.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Lewis Holmes, Kain Peacock, Daniel Squirrell, Will Tumber, Ryan Crooks, Oscar Shue",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lewis-holmes-98/com617group10/issues"
-  },
-  "engines": {
-    "node": "14.x"
   },
   "homepage": "https://github.com/lewis-holmes-98/com617group10#readme",
   "dependencies": {
@@ -28,6 +24,59 @@
     "dotenv": "^16.0.0",
     "loading-cli": "^1.1.0",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.6"
+    "mongoose": "^6.2.6",
+    "axios": "^0.26.0",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.0.4",
+    "classnames": "^2.3.1",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "lodash": "^4.17.21",
+    "node-loader": "^2.0.0",
+    "postcss": "^8.4.8",
+    "postcss-cli": "^9.1.0",
+    "prop-types": "^15.6.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.3.1",
+    "react-modal": "^3.14.4",
+    "react-overlays": "^5.1.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-router-outlet": "^0.2.4",
+    "sass": "^1.49.10",
+    "sass-loader": "^12.6.0",
+    "semantic-ui-react": "^2.1.2",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.23",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ],
+      {
+        "plugins": [
+          "@babel/plugin-proposal-class-properties"
+        ]
+      }
+    ]
   }
 }

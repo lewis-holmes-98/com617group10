@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/lewis-holmes-98/com617group10#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "loading-cli": "^1.1.0",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.6",
     "axios": "^0.26.0",
     "jquery": "^3.6.0",
     "react": "^17.0.2"

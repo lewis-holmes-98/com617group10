@@ -15,14 +15,6 @@ var corsOptions = {
 
 const { PORT, MONGODB_URI } = process.env;
 
-app.use(cors(corsOptions));
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// const PORT = process.env.PORT || 8080;
-
 mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
 mongoose.connection.on("error", (err) => {
   console.error(err);
@@ -30,11 +22,17 @@ mongoose.connection.on("error", (err) => {
   process.exit()
 });
 
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
 // Controllers
-const resortsController = require("../../controllers/resort");
+const resortsController = require("./controllers/resort");
 
 app.get("/weather", resortsController.list)

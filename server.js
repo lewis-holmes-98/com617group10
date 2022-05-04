@@ -32,7 +32,16 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+// Models
+const resortModel = require("./models/Resort")
+
 // Controllers
 const resortsController = require("./controllers/resort");
-
-app.get("/weather", resortsController.list)
+const { useParams } = require("react-router-dom");
+// app.get("/weather", resortsController.list)
+app.get("/weather", (req, res) => {
+  resortModel.findOne({ name: req.useParams.formattedName})
+  .then(function(dbResortName) {
+    res.json(dbResortName)
+  })
+})

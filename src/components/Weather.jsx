@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 
 const Weather = ({resorts}) => {
     return (
-        <div className="resort-list">
-          {resorts.map(resort => (
-            <div className="resort-name" key={resort.formattedName} >
-                <h2>{ resort.name }</h2>
-                <p>Best week: { resort.bestWeekWindow }</p>
-            </div>
-          ))}
+        <div className="container mx-auto pt-6">
+        <div className="not-implemented">
+        <h2>Page Not Yet implemented</h2>
+        <p>That page is still under construction</p>
+        <Link to="/" className="font-medium text-gray-600 rounded">Back to the homepage...</Link>
         </div>
-      );
+    </div>
+  );
     }
 
 

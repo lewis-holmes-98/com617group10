@@ -7,7 +7,8 @@
     "build": "webpack",
     "seed": "node seeder.js",
     "run:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
-    "build:css": "postcss src/styles/tailwind.css -o dist/main.css"
+    "build:css": "postcss src/styles/tailwind.css -o dist/main.css",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

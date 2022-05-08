@@ -1,0 +1,37 @@
+[
+    {
+      "name" :"brides_les_bains",
+      "formattedName":"Brides-les-bains",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"orelle",
+      "formattedName":"Orelle",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"courchevel",
+      "formattedName":"Courchevel",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"les_menuires",
+      "formattedName":"Les Menuires",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"saint_martin",
+      "formattedName":"Saint-Martin-de-Belleville",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"meribel",
+      "formattedName":"Méribel",
+      "bestWeekWindow":""
+    },
+    {
+      "name" :"val_thorens",
+      "formattedName":"Val Thorens",
+      "bestWeekWindow":""
+    }
+]

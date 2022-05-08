@@ -154,21 +154,27 @@ def create_score_from_temp(column,upper_limit,lower_limit,middle_limit):
     
     
 def create_score_from_snow(column,upper_limit,lower_limit,rolling_day_length = 7):
-    '''Function to implement snow score algorithm.'''
-    col = column.tolist()
+    '''Function to implement snow score algorithm.
+     Give this function snow_ma column
+    '''
+    max_snow = column.max()
+    snow_prop_max = column / max_snow
+    
+    
     score_list = []
-    mean_ahead_snow = running_mean(col,rolling_day_length)
     
+    for item in snow_prop_max:
+        score_list.append(2**(9*(item-0.88))-1)
     # create a list of rank
-    array = np.array(mean_ahead_snow)
-    temp = array.argsort()
-    ranks = np.empty_like(temp)
-    ranks[temp] = np.arange(len(array))
+#     array = np.array(mean_ahead_snow)
+#     temp = array.argsort()
+#     ranks = np.empty_like(temp)
+#     ranks[temp] = np.arange(len(array))
     
-    ranks = list(ranks/365)
-    for item in ranks:
-        score_list.append(2**(8*(item - 0.88)) - 1)
-        #score_list.append(2/(1+(2.71828182846)**(-10*(item-0.5)))-1) # alternative, closer to linear
+#     ranks = list(ranks/365)
+#     for item in ranks:
+#         score_list.append(2**(8*(item - 0.88)) - 1)
+#         #score_list.append(2/(1+(2.71828182846)**(-10*(item-0.5)))-1) # alternative, closer to linear
     return [float(score) for score in score_list]
 
 
@@ -196,6 +202,9 @@ def process_resort_data(resort):
     resort_grouped = resort.groupby("dayofyear").agg(["mean","count"])
     resort_grouped.columns = ["_".join(a) for a in resort_grouped.columns.to_flat_index()]
 
+    # create a snow 7-day moving average column
+    resort_grouped["snow_ma"] = running_mean(resort_grouped["totalSnow_cm_mean"].tolist(),10)
+    
     # create an empty score column
     resort_grouped["score"] = 0
     

@@ -1,9 +1,9 @@
 import React from "react";
-import '../styles/main.css';
+// import ModalExample from "./Modal/LoginModal.jsx"
 
 function Home() {
     return (
-        <div className="container md mx-auto pt-6">
+        <div className="container mx-auto px-4 pt-6 object-fill">
             <div>
                 <p className='text-gray-600'>Welcome</p>
             </div>
@@ -50,8 +50,8 @@ function Home() {
                     <p className="text-justify pt-2 text-gray-600">Crud snow is among the worst snow types, it is the by-product of skiers skiing on un-groomed powder. It is challenging because of the changing consistency of the snow surface.
                         The system will not consider this type of snow.</p>
                 </div>
-                <div className="container mx-auto pt-5 pb-4 ">
-                    <iframe width="788" height="443" src="https://www.youtube.com/embed/wDhxhzWre6I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <div>
+                    <iframe className="mx-auto py-3" width="600" height="400" src="https://www.youtube.com/embed/wDhxhzWre6I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
             </div>
         </div>

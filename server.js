@@ -10,7 +10,7 @@ const path = require("path");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8080"
+  origin: "http://localhost:5000"
 };
 
 const { PORT, MONGODB_URI } = process.env;
@@ -22,11 +22,14 @@ mongoose.connection.on("error", (err) => {
   process.exit()
 });
 
+// Middlewear
+
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "..", dist)));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
@@ -45,3 +48,10 @@ app.get("/weather", (req, res) => {
     res.json(dbResortName)
   })
 })
+
+
+// Routes 
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "components", "app.jsx"));
+// });
+

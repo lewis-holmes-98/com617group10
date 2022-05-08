@@ -1,8 +1,9 @@
 import React, { useReducer, useState, Component, useEffect, useMemo, useCallback } from "react";
 import { validate } from "schema-utils";
 import "../styles/tailwind.css"
+import jQuery from 'jquery'
 
-const showMobileMenu = $(document).ready(function () {
+const showMobileMenu = jQuery(document).ready(function () {
     const btn = document.querySelector("button.mobile-menu-button")
     const menu = document.querySelector(".mobile-menu");
 

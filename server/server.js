@@ -36,10 +36,10 @@ app.listen(PORT, () => {
 });
 
 // Models
-const resortModel = require("./models/Resort")
+const resortModel = require("../models/Resort")
 
 // Controllers
-const resortsController = require("./controllers/resort");
+const resortsController = require("../controllers/resort");
 const { useParams } = require("react-router-dom");
 // app.get("/weather", resortsController.list)
 app.get("/weather", (req, res) => {

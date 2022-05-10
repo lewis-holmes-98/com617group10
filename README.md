@@ -8,10 +8,31 @@ Predictions made using the score column in the data.
 <img src="/img/example_prediction2.png" width="300"> 
 
 # Setup
-1. `npm install`
 
-2. `npm run seed` (use `npm run seedProduction` for production database)
-3. Remove empty space from hashed passwords in database.
+## Start the server
+
+In the terminal, navigate to the server directory:
+
+`cd server`
+
+Run `npm install` to install required dependencies
+Run `npm start` to start the app
+
+
+## Run the Client
+In another terminal, navigate to the client directory:
+
+`cd COM617GROUP10`
+
+Run `npm install` to install required dependencies
+Run `npm start` to start the app
+
+
+## Seeding database
+
+`npm run seed` (use `npm run seedProduction` for production database)
+
+Remove empty space from hashed passwords in database.
 
 
 # Using mongodb to store images

@@ -8,6 +8,9 @@ const path = require("path");
 const app = express();
 
 const indexRouter = require("./routes/index")
+const weatherRouter = require("./routes/weather")
+const resortsRouter = require("./routes/resorts")
+
 const testAPIRouter = require("./routes/testAPI")
 const testDBRouter = require("./routes/testDB")
 
@@ -31,8 +34,10 @@ app.use("/", indexRouter)
 app.use("/testAPI", testAPIRouter)
 app.use("/testDB", testDBRouter)
 
+app.use("/weather", weatherRouter)
+app.use("/resorts", resortsRouter)
 
-
+// todo: Add error handler
 
 
 

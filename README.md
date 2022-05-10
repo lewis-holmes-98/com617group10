@@ -16,6 +16,7 @@ In the terminal, navigate to the server directory:
 `cd server`
 
 Run `npm install` to install required dependencies
+
 Run `npm start` to start the app
 
 
@@ -25,6 +26,7 @@ In another terminal, navigate to the client directory:
 `cd COM617GROUP10`
 
 Run `npm install` to install required dependencies
+
 Run `npm start` to start the app
 
 

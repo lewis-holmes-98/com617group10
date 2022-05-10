@@ -1,7 +1,6 @@
 const Resorts = require("../models/Resort");
 const Historics = require("../models/Historic");
-
-const bodyParser = require("body-parser");
+const axios = require("axios");
 
 exports.list = async (req, res) => {
     try {
@@ -19,14 +18,16 @@ exports.details = async (req, res) => {
         const resortDetails = await Resorts.findOne({name: id});
         const resortId = resortDetails._id;
         resortHistoric = await Historics.find({resort_id: resortId});
-        
-        //const
+        link = "https://api.openweathermap.org/data/2.5/weather?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&appid=2afd68316886e4f486a125facf22718d"
 
-        //console.log(Historic);
-
-        res.render("resort", { resortDetails: resortDetails });
+        const response = await axios.get(link).then(res => res.data)
+        .catch(function (error) {
+            console.log(error);
+        });
+        weatherData = response
+        res.render("resort", { resortDetails: resortDetails, weatherData: weatherData});
         
-    } catch (e) {
-        res.status(404).send({message: "ERROR"})
-    }
+     } catch (e) {
+         res.status(404).send({message: JSON.stringify(e)})
+     }
 };

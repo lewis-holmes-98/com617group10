@@ -4,24 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
+    <title>Resort</title>
 </head>
 <body>
     <%- include('common/header'); -%>
-    <p>dsgfihugfdbnuiogfdnuoigfdnuoipgfds</p>
+
+    <h2><%= resortDetails.formattedName %></h2>
+    <p>The current weather is:</p>
+    <p>API request here</p>
+
+    <p>The previous two weeks of weather:</p>
+
+    <p>Our Algorithm predicts the best 6 week window start from: <%= resortDetails.bestWeekWindow %></p>
+    
+
+    
     <table class="table table-striped custab">
         <thead>
-
-
-
     <tr>
         <th>Name</th>
+        <th>Resort Id</th>
     </tr>
     </thead>
     <tr>
         <td>
             <%= resortDetails.formattedName %>
-        </td>  
+        </td> 
+        <td>
+            <%= resortDetails._id %>
+        </td>   
     </tr> 
     
     </table>    

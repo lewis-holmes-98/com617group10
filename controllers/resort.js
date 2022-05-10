@@ -1,5 +1,5 @@
 const Resorts = require("../models/Resort");
-const Historic = require("../models/Historic");
+const Historics = require("../models/Historic");
 
 const bodyParser = require("body-parser");
 
@@ -17,8 +17,13 @@ exports.details = async (req, res) => {
     const id = req.params.id;
     try {
         const resortDetails = await Resorts.findOne({name: id});
+        const resortId = resortDetails._id;
+        resortHistoric = await Historics.find({resort_id: resortId});
+        
+        //const
 
-        //const Historic = await Historic.find({resort_id: resortDetails._id});
+        //console.log(Historic);
+
         res.render("resort", { resortDetails: resortDetails });
         
     } catch (e) {

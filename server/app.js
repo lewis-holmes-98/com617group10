@@ -1,4 +1,3 @@
-require("dotenv").config()
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -10,19 +9,7 @@ const app = express();
 
 const indexRouter = require("./routes/index")
 const testAPIRouter = require("./routes/testAPI")
-
-// const { PORT, MONGODB_URI } = process.env;
-
-// mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
-// mongoose.connection.on("error", (err) => {
-//   console.error(err);
-//   console.log("MongoDB connection error. Please make sure MongoDb is running", err);
-//   process.exit()
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}.`);
-// });
+const testDBRouter = require("./routes/testDB")
 
 app.set("views", path.join(__dirname, "views"));
 
@@ -42,7 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter)
 app.use("/testAPI", testAPIRouter)
-
+app.use("/testDB", testDBRouter)
 
 
 

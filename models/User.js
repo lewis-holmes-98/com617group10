@@ -6,7 +6,7 @@ const { Binary } = require("mongodb");
 const userSchema = new Schema(
     {
         username: { type: String, required: [true, 'Please create a username.'], index: { unique: true } },
-        name: { type: String, required: [true, 'Please provide an email address.']},
+        name: { type: String, required: [true, 'Please provide your name.']},
         email: { type: String, required: [true, 'Please provide an email address.'], index: { unique: true } },
         emailOptIn: {type: Boolean},
         //profilePic: {type: Buffer},

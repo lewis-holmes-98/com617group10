@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.5"
+    "nodemon": "^2.0.16"
   },
   "bugs": {
     "url": "https://github.com/lewis-holmes-98/com617group10/issues"

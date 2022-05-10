@@ -7,10 +7,8 @@
     <title>TEST</title>
 </head>
 <body>
-    <p>TEST</p>
-    <a class="btn btn-sm btn-outline-secondary" href="signup">Sign up</a>
-    <a class="btn btn-sm btn-outline-primary" href="login">Log in</a>
-    <h1>TESTST</h1>
+    <%- include('common/header'); -%>
+    
     <% resorts.forEach(resort => { %>
         <a href="resort/<%= resort.name %>" class="link"><%= resort.formattedName %></a>
     </br>

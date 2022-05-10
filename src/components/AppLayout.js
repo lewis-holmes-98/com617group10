@@ -1,17 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Sidebar from "./Sidebar.jsx";
-import BodyWrapper from "./BodyWrapper.jsx";
-import Navbar from "./Navbar.jsx";
-import Home from "./Home.jsx";
-import Map from './Map.jsx'
-import Weather from "./Weather.jsx";
-import Contact from "./Contact.jsx";
-import Login from './Login.jsx';
-import Signup from "./Signup.jsx";
-import NotFound from "./NotFound.jsx";
-import Modal from "./Modal.jsx";
+import Sidebar from "./Sidebar.js";
+import BodyWrapper from "./BodyWrapper.js";
+import Navbar from "./Navbar.js";
+import Home from "./Home.js";
+import Map from './Map.js'
+import Weather from "./Weather.js";
+import Contact from "./Contact.js";
+import Login from './Login.js';
+import Signup from "./Signup.js";
+import NotFound from "./NotFound.js";
+import Modal from "./Modal.js";
 
 import '../styles/main.css';
 

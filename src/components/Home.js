@@ -1,5 +1,5 @@
 import React from "react";
-// import ModalExample from "./Modal/LoginModal.jsx"
+// import ModalExample from "./Modal/LoginModal.js"
 
 function Home() {
     return (

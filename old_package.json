@@ -1,0 +1,86 @@
+{
+  "name": "snowcore-skiing",
+  "version": "1.0.0",
+  "description": "Group project for the development of a skiing weather app",
+  "main": "index.js",
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "npm run build && (cd server && npm start)",
+    "start-client": "react-scripts start",
+    "seed": "node seeder.js",
+    "run:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "build:css": "postcss src/styles/tailwind.css -o dist/main.css"
+  },
+  "eslintConfig": {
+    "extends": "COM617GROUP10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewis-holmes-98/com617group10.git"
+  },
+  "author": "Lewis Holmes, Kain Peacock, Daniel Squirrell, Will Tumber, Ryan Crooks, Oscar Shue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lewis-holmes-98/com617group10/issues"
+  },
+  "homepage": "https://github.com/lewis-holmes-98/com617group10#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "concurrently": "^7.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "jquery": "^3.6.0",
+    "loading-cli": "^1.1.0",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.3.1",
+    "react-modal": "^3.14.4",
+    "react-overlays": "^5.1.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "^2.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.5",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.16",
+    "postcss": "^8.4.8",
+    "postcss-cli": "^9.1.0",
+    "prop-types": "^15.6.2",
+    "sass": "^1.49.10",
+    "semantic-ui-react": "^2.1.2",
+    "tailwindcss": "^3.0.23",
+    "webpack": "^4.28.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ],
+      {
+        "plugins": [
+          "@babel/plugin-proposal-class-properties"
+        ]
+      }
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

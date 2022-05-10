@@ -29,7 +29,13 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "..", dist)));
+
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"))
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

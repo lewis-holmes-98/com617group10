@@ -13,7 +13,7 @@ import Signup from "./Signup.js";
 import NotFound from "./NotFound.js";
 import Modal from "./Modal.js";
 
-import '../styles/main.css';
+import '../main.css';
 
 const AppLayout = ({ children }) => {
     return (

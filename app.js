@@ -75,11 +75,11 @@ app.get("/login", (req, res) => {
 
 app.post("/login", usersController.login);
 
-// app.get("/logout", async (req, res) => {
-//   req.session.destroy();
-//   global.user = false;
-//   res.redirect('/');
-// })
+app.get("/logout", async (req, res) => {
+  req.session.destroy();
+  global.user = false;
+  res.redirect('/');
+})
 
 /* Local app */
 app.listen(PORT, () => {

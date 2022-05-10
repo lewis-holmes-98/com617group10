@@ -30,7 +30,7 @@ li:not(.active):hover {
     <ul class = "navbar">
      <li><a href="/"> Resorts </a></li> 
       <% if(user) { %>
-      <li><a href="/logout"> <%= user.email %> (Logout)</a></li> <%
+      <li><a href="/logout"> <%= user.username %> (Logout)</a></li> <%
       }%> <% if(!user) { %>
       <li><a href="/login"> Login </a></li>
       <li><a class="nav-link" href="/signup"> Register </a></li>

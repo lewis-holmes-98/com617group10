@@ -20,14 +20,14 @@
             <div class="form-group">
               <label for="name">Email</label>
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="email"
-                name="email"
-                placeholder="Enter Email"/>
+                id="username"
+                name="username"
+                placeholder="Enter Username"/>
         
-              <% if (errors['email']) { %>
-              <p style="color: red"><%= errors['email'].message %></p>
+              <% if (errors['username']) { %>
+              <p style="color: red"><%= errors['username'].message %></p>
               <% } %>
             </div>
     

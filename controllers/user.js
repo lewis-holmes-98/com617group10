@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 
 exports.login = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ username: req.body.username });
         if (!user) {
-            res.render('login', { errors: { email: { message: 'email not found' } } })
+            res.render('login', { errors: { username: { message: 'username not found' } } })
             return;
         }
 
@@ -51,8 +51,6 @@ exports.create = async (req, res) => {
             res.render('signup', { errors: { username: { message: 'username already exists' } }})
             return;
         }
-        console.log(user);
-
         await user.save();
         res.redirect('/?message=user saved')
     } catch (e) {

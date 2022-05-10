@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    
+    <main class="container" style="flex: 1 0 auto;">
+    
+        <div class="text-center">
+          <p class="blog-header-logo text-dark">Create an account</p>
+        </div>
+    
+        <div class="d-flex justify-content-center align-items-center">
+          <form method="POST" action="/signup">
+    
+            <div class="form-group">
+              <label for="name">Username (Required)</label>
+              <input
+                type="username"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Create a username"/>
+
+                <% if (errors['username']) { %>
+                    <p style="color: red"><%= errors['username'].message %></p>
+                <% } %>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name (Required)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="¿Comment t'appelle tu? 🥐"/>
+  
+                  <% if (errors['name']) { %>
+                      <p style="color: red"><%= errors['name'].message %></p>
+                  <% } %>
+              </div>
+      
+            <div class="form-group">
+              <label for="name">Email (Required)</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="email@email.com"/>
+        
+              <% if (errors['email']) { %>
+              <p style="color: red"><%= errors['email'].message %></p>
+              <% } %>
+            </div>
+    
+            <div class="form-group">
+              <label for="password">Password (Required)</label>
+              <input type="password" class="form-control" name="password" placeholder = "Create a password"/>
+              <% if (errors['password']) { %>
+              <p style="color: red"><%= errors['password'].message %></p>
+              <% } %>
+            </div>
+
+            <input type="checkbox" id="emailYes" name="emailYes" value="Opt in to receive emails?" checked>
+            <label for="emailYes"> Opt in to receive emails?</label><br>
+    
+        
+            <button type="submit" style="margin-top: 1rem;margin-bottom: 2rem;" class="btn btn-primary">Create account</button>
+          </form>
+        </div>
+    
+    </main>
+</head>
+<body>
+    
+</body>
+</html>

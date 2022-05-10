@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container" style="flex: 1 0 auto;">
+    
+        <div class="text-center">
+          <p class="blog-header-logo text-dark">Log in</p>
+        </div>
+    
+        <div class="d-flex justify-content-center align-items-center">
+          <form method="POST" action="/login">
+      
+            <div class="form-group">
+              <label for="name">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter Email"/>
+        
+              <% if (errors['email']) { %>
+              <p style="color: red"><%= errors['email'].message %></p>
+              <% } %>
+            </div>
+    
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" placeholder = "Password"/>
+              <% if (errors['password']) { %>
+              <p style="color: red"><%= errors['password'].message %></p>
+              <% } %>
+            </div>
+        
+            <button type="submit" style="margin-top: 1rem;margin-bottom: 2rem;" class="btn btn-primary">Log in</button>
+          </form>
+        </div>
+    
+    </main>
+    
+</body>
+</html>

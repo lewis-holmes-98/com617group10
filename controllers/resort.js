@@ -1,12 +1,27 @@
 const Resorts = require("../models/Resort");
+const Historic = require("../models/Historic");
+
+const bodyParser = require("body-parser");
 
 exports.list = async (req, res) => {
     try {
         const resorts = await Resorts.find({});
-        res.render("resorts", { resorts: resorts })
+        res.render("index", { resorts: resorts });
+        
     } catch (e) {
-        res.status(404).send({message: "OPPSIE DAISY"})
+        res.status(404).send({message: "ERROR"})
     }
 };
 
-// exports.update
+exports.details = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const resortDetails = await Resorts.findOne({name: id});
+
+        //const Historic = await Historic.find({resort_id: resortDetails._id});
+        res.render("resort", { resortDetails: resortDetails });
+        
+    } catch (e) {
+        res.status(404).send({message: "ERROR"})
+    }
+};

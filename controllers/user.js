@@ -36,7 +36,8 @@ exports.create = async (req, res) => {
             username: req.body.username,
             name: req.body.name, 
             email: req.body.email, 
-            password: req.body.password
+            password: req.body.password,
+            emailOptIn: true // TODO: fix this to receive the checkbox
             });
 
         const emailExists = await User.findOne({ email: req.body.email })
@@ -63,7 +64,26 @@ exports.create = async (req, res) => {
             message: JSON.parse(e),
         });
     }
-}
+};
+
+
+exports.unsave = async (req, res) => {
+    try {
+        const resortId = req.params.id;
+        const userId = req.session.userID;
+        await User.updateOne(
+        { _id:userId}, {
+            $pull: {
+            saved: resortId
+            }
+        });
+        res.redirect("/saved");
+    } catch (e) {
+        res.status(404).send({
+        message: `Cannot leave -  error ${id}.`,
+        });
+    }
+};
 
 
 

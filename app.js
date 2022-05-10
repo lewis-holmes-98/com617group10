@@ -13,6 +13,8 @@ const { PORT, MONGODB_URI } = process.env;
 /* Controllers */
 const resortsController = require("./controllers/resort");
 const usersController = require("./controllers/user");
+const savedApiController = require("./controllers/api/saved");
+const savedController = require("./controllers/saved");
 
 /* Database */
 mongoose.connect(MONGODB_URI, { 
@@ -80,6 +82,16 @@ app.get("/logout", async (req, res) => {
   global.user = false;
   res.redirect('/');
 })
+
+app.get("/user/unsave/:id",usersController.unsave);
+
+/* Saved */
+app.post("/api/saved", savedApiController.create);
+
+app.get("/saved", authMiddleware, savedController.list, (req, res) => {
+  res.render("saved", { errors: {} });
+});
+
 
 /* Local app */
 app.listen(PORT, () => {

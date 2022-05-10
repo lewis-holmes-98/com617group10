@@ -11,17 +11,17 @@ const userSchema = new Schema(
         emailOptIn: {type: Boolean},
         //profilePic: {type: Buffer},
         isAdmin: {type: Boolean},
-        favourites: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Resort"
-          },
         password: { type: String, required: [true, 'Please create a password.'], 
                                     minLength: [4, "Password too short."],
                                     maxLength: [14, "Password too long."] },
-
+        saved: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Resort"
+            },
     },
     { timestamps: true }
 );
+
 
 userSchema.pre('save', async function (next) {
     try {

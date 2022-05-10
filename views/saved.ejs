@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="scripts/search.js"></script>
+
+    <title>Saved</title>
+</head>
+<body>
+    <main class="container " style="flex: 1 0 auto;">
+
+        <div class="text-center">
+          <p class="blog-header-logo text-dark" style="margin-bottom: 0rem !important ;">Saved resources</p>
+        </div>
+    
+        </div>
+        <div class="row mb-3">
+        <% const savedResorts = resorts  %>
+        <% savedResorts.forEach(resort => { %>
+        
+            <div class="col-md-4">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-secondary"><%= resort.formattedName %></strong>
+                        <a href="resort/<%= resort.name %>" class="link link-secondary">Go to resort</a> 
+                        <a href="/user/unsave/<%= resort.id %>" class="link link-primary">Unsave</a> 
+                    </div>
+                </div>
+            </div>
+        <% } )%>
+    
+        </div>
+        
+      </main>
+    
+</body>
+</html>

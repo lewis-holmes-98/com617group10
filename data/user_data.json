@@ -5,7 +5,7 @@
         "email": "admin1",
         "emailOptIn": false,
         "isAdmin": true,
-        "favourites": [],
+        "saved": [],
         "password": "set_in_seeder"
     },
     {
@@ -14,7 +14,7 @@
         "email": "user1",
         "emailOptIn": false,
         "isAdmin": false,
-        "favourites": [],
+        "saved": [],
         "password": "set_in_seeder"
     }
 ]

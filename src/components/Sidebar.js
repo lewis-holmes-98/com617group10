@@ -17,7 +17,7 @@ const sidebarNavItems = [
     {
         display: 'Courchevel',
         // icon,
-        to: '/',
+        to: '/Courchevel',
         section: ''
     },
     {

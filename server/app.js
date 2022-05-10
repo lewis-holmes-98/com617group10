@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const router = express.Router();
+
+// Controllers
+const resortsController = require("./controllers/resort");
 
 const indexRouter = require("./routes/index")
 // const weatherRouter = require("./routes/weather")
@@ -28,37 +32,27 @@ app.use(cookieParser())
 
 app.use(express.static(path.join(__dirname, "public")));
 
+
+// fetch all available database data
+// router.get("/getData", (req, res) => {
+//     DataTransfer.find
+// })
+
+// routes
+app.get("/", resortsController.list);
+
+
+app.get("/resort/:id",resortsController.details, (req, res) => {
+    res.render('resort', { errors: {} })
+});
+
 app.use("/", indexRouter)
 app.use("/testAPI", testAPIRouter)
 app.use("/testDB", testDBRouter)
 app.use("/courchevel", courchevelController.courchevel)
 
 
-// app.use("/weather", weatherRouter)
-// app.use("/resorts", resortsRouter)
-
-// todo: Add error handler
 
 
-
-// Models
-// const resortModel = require("../models/Resort")
-
-// Controllers
-// const resortsController = require("../controllers/resort");
-// const { useParams } = require("react-router-dom");
-// app.get("/weather", resortsController.list)
-// app.get("/weather", (req, res) => {
-//   resortModel.findOne({ name: req.useParams.formattedName})
-//   .then(function(dbResortName) {
-//     res.json(dbResortName)
-//   })
-// })
-
-
-// Routes 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "components", "app.jsx"));
-// });
 
 module.exports = app;

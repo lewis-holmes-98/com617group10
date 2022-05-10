@@ -18,7 +18,7 @@ const Navbar = () => {
                             <div className="hidden md:flex items-center space-x-1">
                                 <Link to="/" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300 ">Home</Link>
                                 <Link to="/map" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Map</Link>
-                                <Link to="/weather" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Weather</Link>
+                                <Link to="/resorts" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Resorts</Link>
                                 <Link to="/contact" className="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Contact Us</Link>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import './main.css';
 import AppLayout from "./components/AppLayout.js";
 
@@ -24,6 +25,10 @@ class App extends Component {
             .then(res => res.text())
             .then(res => this.setState({ dbResponse: res }))
             .catch(err => err);
+    }
+
+    getDataFromDB = () => {
+        fetch('http://localhost:9000/api/getData')
     }
 
     componentDidMount() {

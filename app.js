@@ -58,6 +58,15 @@ const authMiddleware = async (req, res, next) => {
   next()
 }
 
+const authEdit = async (req, res, next) => {
+  const user = await User.findById(req.session.userID);
+  if(!(user.level == 2 || user.level == 3 || req.session.userID == req.params.id)) {
+    return res.redirect('/');
+  }
+  next()
+}
+
+
 /* App routes */
 app.get("/", resortsController.list);
 
@@ -87,7 +96,7 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/users/editUser/:id",authMiddleware, usersController.edit, (req, res) => {
+app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {
   console.log("H")
   res.render('editUser', { errors: {} })
 });

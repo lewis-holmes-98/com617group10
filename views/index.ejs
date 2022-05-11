@@ -15,14 +15,15 @@
         <%- include('common/header'); -%>
     </div>
 
-    <main class="container mx-auto mt-4 px-4">
-        <div class="text-center pt-4 pb-4">
+    <main class="container mt-8 pb-4 object-fill max-w-md max-h-max bg-gray-50">
+        <div class="py-4 px-4">
             <p class="blog-header-logo text-2xl">Resorts</p>
         </div>
-        <div class="flex justify-center">
-            <div class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 border-slate-500 max-w-sm">
+        
+        <div class="">
+            <div class="py-4 px-2 max-w-sm">
                 <% resorts.forEach(resort=> { %>
-                    <div class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    <div class="py-4 px-2 text-gray-700 font-semibold hover:bg-slate-100 transition duration-300">
                         <a href="resort/<%= resort.name %>" class="link">
                             <%= resort.formattedName %>
                         </a>

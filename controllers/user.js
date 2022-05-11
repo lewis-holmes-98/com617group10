@@ -86,4 +86,13 @@ exports.unsave = async (req, res) => {
 };
 
 
+exports.update = async (req, res) => {
+    try {
+        const userId = req.session.userID;
+        const user = await User.findOne({_id: userId });
 
+        res.render("myAccount", {user : user});//
+    } catch (e) {
+        res.status(404).send({message: JSON.stringify(e)});
+    }
+};

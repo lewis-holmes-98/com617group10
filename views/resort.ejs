@@ -12,19 +12,14 @@
 <body>
     <%- include('common/header'); -%>
 
-    <a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a>
-
-    <h2><%= resortDetails.formattedName %></h2>
-    <p>The current weather is:</p>
-    <p>API request here</p>
-
-    <p>The previous two weeks of weather:</p>
-
-    <p>Our Algorithm predicts the best 6 week window start from: <%= resortDetails.bestWeekWindow %></p>
     
-    <p><%= resortDetails.name %> </p>
-    <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>  </p> 
-    <p> Type: <%= weatherData.weather[0].description%>  </p> 
+    <h2><%= resortDetails.formattedName %></h2><% if(user) { %><a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a><% } %>
+    <p>The current weather is<b> <%= weatherData.weather[0].description%>  </b></p>
+    <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 
     <p> Wind Speed (m/s): <%= weatherData.wind.speed%>  </p> 
+    <p>Our Algorithm predicts the best 6 week window start from: <%= resortDetails.bestWeekWindow %></p>
+    <p>The previous two weeks of weather:</p>    
+    
+    
 </body>
 </html>

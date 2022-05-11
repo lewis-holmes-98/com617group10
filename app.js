@@ -15,6 +15,7 @@ const resortsController = require("./controllers/resort");
 const usersController = require("./controllers/user");
 const savedApiController = require("./controllers/api/saved");
 const savedController = require("./controllers/saved");
+const adminController = require("./controllers/admin");
 
 /* Database */
 mongoose.connect(MONGODB_URI, { 
@@ -30,6 +31,7 @@ mongoose.connect(MONGODB_URI, {
       console.log("Not connecting to database.");
       process.exit();
     });
+
 
 /* Middleware */
 app.use(express.static(path.join(__dirname, "public")));
@@ -64,7 +66,8 @@ app.get("/resort/:id",resortsController.details, (req, res) => {
     res.render('resort', { errors: {} })
 });
 
-// /* Users */
+
+/* Users */
 app.get("/signup", (req, res) => {
   res.render('signup', { errors: {} })
 });
@@ -83,7 +86,17 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/user/unsave/:id",usersController.unsave);
+app.get("/myAccount",usersController.update, (req, res) => {
+  res.render('myAccount', { errors: {} })
+});
+
+
+/* Admin page */
+app.get("/adminPage", adminController.adminControls);
+// app.get("/adminPage",adminController.adminControls, (req, res) => {
+//   res.render('adminPage', { errors: {} })
+// });
+
 
 /* Saved */
 app.post("/api/saved", savedApiController.create);
@@ -91,6 +104,9 @@ app.post("/api/saved", savedApiController.create);
 app.get("/saved", authMiddleware, savedController.list, (req, res) => {
   res.render("saved", { errors: {} });
 });
+
+app.get("/user/unsave/:id",usersController.unsave);
+
 
 
 /* Local app */

@@ -8,39 +8,41 @@
 </head>
 <body>
     <%- include('common/header'); -%>
-    <div class="form-group">
-        <label for="username">username</label>
-        <input
-          type="username"
-          class="form-control"
-          id="username"
-          name="username"
-          value="<%= user.username %>"
-          placeholder="Username..."/>
-    </div>
-    <div class="form-group">
-        <label for="name">name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-          value="<%= user.name %>"
-          placeholder="Username..."/>
-    </div>
-    <div class="form-group">
-        <label for="email">email</label>
-        <input
-          type="text"
-          class="form-control"
-          id="email"
-          name="email"
-          value="<%= user.email %>"
-          placeholder="Email..."/>
-    </div>
+    <p><%= user.id %></p>
+    <form method="POST" action="/update/<%= user.id %>">
+        <div class="form-group">
+            <label for="username">username</label>
+            <input
+            type="username"
+            class="form-control"
+            id="username"
+            name="username"
+            value="<%= user.username %>"
+            placeholder="Username..."/>
+        </div>
+        <div class="form-group">
+            <label for="name">name</label>
+            <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="<%= user.name %>"
+            placeholder="Username..."/>
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            value="<%= user.email %>"
+            placeholder="Email..."/>
+        </div>
+        <button type="submit">Update details</button>
+    </form>
     
-
-    <button>Save changes</button>
     <button>Delete my account</button>
 
 </body>

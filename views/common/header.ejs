@@ -33,7 +33,7 @@ li:not(.active):hover {
       <li><a href="/logout"> <%= user.username %> (Logout)</a></li>
       <li><a href="/saved"> Saved</a></li>
       <li><a href="/myAccount"> Account settings</a></li>
-      <% if(user.isAdmin == true) { %><li><a href="/adminPage"> Admin controls</a></li><% } %>
+      <% if(!(user.level == "U")) { %><li><a href="/adminPage"> Admin controls</a></li><% } %>
       <%
       }%> <% if(!user) { %>
       <li><a href="/login"> Login </a></li>

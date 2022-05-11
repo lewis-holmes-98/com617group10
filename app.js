@@ -94,10 +94,6 @@ app.get("/users/makeAdmin/:id", usersController.makeAdmin);
 
 /* Admin page */
 app.get("/adminPage", adminController.adminControls);
-// app.get("/adminPage",adminController.adminControls, (req, res) => {
-//   res.render('adminPage', { errors: {} })
-// });
-
 
 /* Saved */
 app.post("/api/saved", savedApiController.create);

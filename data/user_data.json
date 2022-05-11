@@ -4,7 +4,7 @@
         "name": "Default Admin1",
         "email": "admin1",
         "emailOptIn": false,
-        "isAdmin": true,
+        "level": "A",
         "saved": [],
         "password": "set_in_seeder"
     },
@@ -13,7 +13,43 @@
         "name": "Default User1",
         "email": "user1",
         "emailOptIn": false,
-        "isAdmin": false,
+        "level": "U",
+        "saved": [],
+        "password": "set_in_seeder"
+    },
+    {
+        "username": "Default-User2",
+        "name": "Default User2",
+        "email": "user2",
+        "emailOptIn": false,
+        "level": "U",
+        "saved": [],
+        "password": "set_in_seeder"
+    },
+    {
+        "username": "Default-User3",
+        "name": "Default User3",
+        "email": "user3",
+        "emailOptIn": false,
+        "level": "U",
+        "saved": [],
+        "password": "set_in_seeder"
+    },
+    {
+        "username": "Default-User4",
+        "name": "Default User4",
+        "email": "user4",
+        "emailOptIn": false,
+        "level": "U",
+        "saved": [],
+        "password": "set_in_seeder"
+    },
+    {
+        "username": "Default-User5",
+        "name": "Default User5",
+        "email": "user5",
+        "emailOptIn": false,
+        "level": "U",
         "saved": [],
         "password": "set_in_seeder"
     }

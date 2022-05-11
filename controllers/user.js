@@ -2,7 +2,6 @@ const Resorts = require("../models/Resort");
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
-
 exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ username: req.body.username });
@@ -27,7 +26,6 @@ exports.login = async (req, res) => {
         });
     }
 }
-
 
 exports.create = async (req, res) => {
     try {
@@ -67,7 +65,6 @@ exports.create = async (req, res) => {
     }
 };
 
-
 exports.unsave = async (req, res) => {
     try {
         const resortId = req.params.id;
@@ -85,7 +82,6 @@ exports.unsave = async (req, res) => {
         });
     }
 };
-
 
 exports.edit = async (req, res) => {
     try {
@@ -123,6 +119,7 @@ exports.adminDelete = async (req, res) => {
       });
     }
   };
+  
 exports.update = async (req, res) => {
     try {
         const userToUpdateId = req.params.id;

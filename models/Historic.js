@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const historicSchema = new Schema(
     {
-        dayofyear: {type:String},
+        dayofyear: {type:Number},
         //name: {type:String},
         hourlytime_mean: {type: Number},
         avgtempC_mean: {type: Number},
@@ -17,6 +17,7 @@ const historicSchema = new Schema(
         score: {type: Number},
         count: {type: Number},
         resort: {type:String},
+        forwardscore:{type: Number},
         resort_id: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Resort"

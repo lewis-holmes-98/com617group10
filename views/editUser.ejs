@@ -8,8 +8,8 @@
 </head>
 <body>
     <%- include('common/header'); -%>
-    <p><%= user.id %></p>
-    <form method="POST" action="/update/<%= user.id %>">
+    <p><%= userToChange.id %></p>
+    <form method="POST" action="/update/<%= userToChange.id %>">
         <div class="form-group">
             <label for="username">username</label>
             <input
@@ -17,7 +17,7 @@
             class="form-control"
             id="username"
             name="username"
-            value="<%= user.username %>"
+            value="<%= userToChange.username %>"
             placeholder="Username..."/>
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@
             class="form-control"
             id="name"
             name="name"
-            value="<%= user.name %>"
+            value="<%= userToChange.name %>"
             placeholder="Username..."/>
         </div>
         <div class="form-group">
@@ -37,7 +37,7 @@
             class="form-control"
             id="email"
             name="email"
-            value="<%= user.email %>"
+            value="<%= userToChange.email %>"
             placeholder="Email..."/>
         </div>
         <button type="submit">Update details</button>

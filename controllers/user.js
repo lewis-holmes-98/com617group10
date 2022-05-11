@@ -89,10 +89,10 @@ exports.unsave = async (req, res) => {
 
 exports.edit = async (req, res) => {
     try {
-        const userId = req.session.userID;
-        const user = await User.findOne({_id: userId });
-
-        res.render("editUser", {user : user});//
+        const userId = req.params.id;
+        console.log(userId)
+        const userToChange = await User.findOne({_id: userId });
+        res.render("editUser", {userToChange: userToChange});
     } catch (e) {
         res.status(404).send({message: JSON.stringify(e)});
     }

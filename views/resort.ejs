@@ -65,7 +65,7 @@
 
     <h2><%= resortDetails.formattedName %></h2>
     <% savedResort=false %> 
-    <% if (user) {%>
+    <% if (user && user.saved != null) {%>
         <% for (let i = 0; i < user.saved.length; i++){ %>
             <%if (resortDetails.id == user.saved[i]){%>
                 <% savedResort=true;%>

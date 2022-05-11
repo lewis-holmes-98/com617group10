@@ -63,6 +63,7 @@ app.get("/", resortsController.list);
 
 
 app.get("/resort/:id",resortsController.details, (req, res) => {
+  console.log("H1")
     res.render('resort', { errors: {} })
 });
 
@@ -86,10 +87,14 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/users/editUser/:id",usersController.edit);
+app.get("/users/editUser/:id",usersController.edit, (req, res) => {
+  console.log("H")
+  res.render('editUser', { errors: {} })
+});
 //app.get("/users/userDelete/:id", usersController.userDelete);
 app.get("/users/adminDelete/:id", usersController.adminDelete);
 app.get("/users/makeAdmin/:id", usersController.makeAdmin);
+app.post("/users/update/:id", usersController.update);
 
 /* Admin page */
 app.get("/adminPage", adminController.adminControls);

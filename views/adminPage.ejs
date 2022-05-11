@@ -19,14 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            <% users.forEach(user => { %>
+            <% users.forEach(account => { %>
                 <tr>
-                    <td><%= user.username %></td>
-                    <td><%= user.name %></td>
-                    <td><%= user.email %></td>
+                    <td><%= account.username %></td>
+                    <td><%= account.name %></td>
+                    <td><%= account.email %></td>
                     <td>
-                        <button>Make admin</button>
-                        <button>Delete account</button> <!-- href to use findandremovebyid-->
+                        <% if(account.level == 'U') { %><a href="/users/accountSettings/<%= account.id %>">Edit User</a><% } %>  
                     </td>
                 </tr>
             <%})%>

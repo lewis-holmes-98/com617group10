@@ -92,12 +92,37 @@ exports.edit = async (req, res) => {
         const userId = req.session.userID;
         const user = await User.findOne({_id: userId });
 
-        res.render("myAccount", {user : user});//
+        res.render("editUser", {user : user});//
     } catch (e) {
         res.status(404).send({message: JSON.stringify(e)});
     }
 };
 
+exports.adminDelete = async (req, res) => {
+    const id = req.params.id;
+    try {
+      await User.findByIdAndRemove(id);
+      res.redirect("/adminPage");
+    } catch (e) {
+      res.status(404).send({
+        message: `unable to delete user ${id}.`,
+      });
+    }
+  };
+
+  exports.makeAdmin= async (req, res) => {
+    const id = req.params.id;
+    try {
+        await User.findOneAndUpdate({ _id: id }, { 
+            isAdmin: true
+          });
+          res.redirect("/adminPage");
+    } catch (e) {
+      res.status(404).send({
+        message: `unable to delete user ${id}.`,
+      });
+    }
+  };
 exports.update = async (req, res) => {
     try {
         const userId = req.session.userID;

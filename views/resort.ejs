@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="/scripts/search.js"></script>
 
-    <title>Resort</title>
+    <title>
+        <%= resortDetails.formattedName %>
+    </title>
 </head>
+
 <body>
-    <%- include('common/header'); -%>
+        <%- include('common/header'); -%>
+
+        <main class="container mx-auto mt-8 pb-4 object-fill max-w-md bg-gray-50">
+
+
+            <div class="text-center pt-4 pb-4">
+                <p class="blog-header-logo text-2xl"><%= resortDetails.formattedName %></p>
+            </div>
+            
+            <div class="py-2">
+                <p class="text-center">The current weather is:</p>
+                <p class="text-center">Weather placeholder</p>
+            </div>
+            
+            <div class="py-2">
+                <p class="text-center">API request:</p>
+                <p class="text-center">API request placeholer</p>
+            </div>
+
+            <div class="py-2">
+                <p class="text-center">The previous two weeks of weather:</p>
+                <p class="text-center">Two weeks of weather placeholder</p>
+            </div>
+
+            <div class="py-2">
+                <p class="text-center">Our Algorithm predicts the best 6 week window starts from: </p>
+                <p class="text-center"><%= resortDetails.bestWeekWindow %></p>
+            </div>
+
+            <div class="py-2">
+                <p class="text-center"> Temperature: </p>
+                <p class="text-center"><%= (weatherData.main.temp-273).toFixed(3)%></p>
+            </div>
+
+            <div class="py-2">
+                <p class="text-center"> Type: </p>
+                <p class="text-center"><%= weatherData.weather[0].description%></p>
+            </div>
+
+            <div class="py-2">
+                <p class="text-center"> Wind Speed (m/s): </p>
+                <p class="text-center"><%= weatherData.wind.speed%></p>
+            </div>
+            
+            <div class="flex justify-center">
+                <a href="#" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300" onclick="handleSave('<%= resortDetails.id %>')" >Save</a>
+            </div>
+    </main>
 
     <h2><%= resortDetails.formattedName %></h2>
     <% savedResort=false %> 
@@ -65,5 +116,7 @@
     <% usersSaved.forEach(user => { %>
         <p><%= user.username %></p>
     <%})%>
+
 </body>
+
 </html>

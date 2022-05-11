@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
             name: req.body.name, 
             email: req.body.email, 
             password: req.body.password,
-            level:"U",
+            level:1,
             emailOptIn: true // TODO: fix this to receive the checkbox
             });
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <body>
   <header>
 
@@ -34,25 +35,29 @@
 
                 <% if(user) { %>
 
-                  <a href="/logout"
-                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
-                    <%= user.username %> (Logout)
-                  </a>
+                  
                   <a href="/saved"
                     class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
                     Saved</a>
-
                   <% }%>
 
-                    <% if(!user) { %>
+                  <% if(!user) { %>
                       <a href="/login"
                         class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
                         Login </a>
                       <a class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"
                         href="/signup"> Register </a>
+                  <% } %>
 
-                      <% } %>
-
+                  <a href="/users/editUser/<%= user.id %>" class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Account Settings</a>
+                  <% if(!(user.level==1)) { %>
+                    <a href="/adminPage" class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Admin Controls</a>
+                  <% } %>
+                  
+                  <a href="/logout"
+                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    <%= user.username %> (Logout)
+                  </a>
               </div>
             </div>
 
@@ -104,19 +109,6 @@
       </nav>
     </div>
 
-    <ul class = "navbar">
-     <li><a href="/"> Resorts </a></li> 
-      <% if(user) { %>
-      <li><a href="/logout"> <%= user.username %> (Logout)</a></li>
-      <li><a href="/saved"> Saved</a></li>
-      <li><a href="/users/editUser/<%= user.id %>"> Account Settings</a></li>
-      <% if(!(user.level == 1)) { %><li><a href="/adminPage"> Admin Controls</a></li><% } %>
-      <%
-      }%> <% if(!user) { %>
-      <li><a href="/login"> Login </a></li>
-      <li><a class="nav-link" href="/signup"> Register </a></li>
-      <% } %>
-    </ul>
 
   </header>
 

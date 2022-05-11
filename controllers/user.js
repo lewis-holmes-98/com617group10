@@ -107,6 +107,19 @@ exports.adminDelete = async (req, res) => {
     }
   };
 
+  exports.userDelete = async (req, res) => {
+    const id = req.params.id;
+    try {
+      await User.findByIdAndRemove(id);
+      console.log("User deleted: " + req.params.id)
+      res.redirect("/");
+    } catch (e) {
+      res.status(404).send({
+        message: `unable to delete user ${id}.`,
+      });
+    }
+  };
+
   exports.makeAdmin= async (req, res) => {
     const id = req.params.id;
     try {

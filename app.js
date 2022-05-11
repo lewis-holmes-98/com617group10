@@ -87,17 +87,17 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/users/editUser/:id",usersController.edit, (req, res) => {
+app.get("/users/editUser/:id",authMiddleware, usersController.edit, (req, res) => {
   console.log("H")
   res.render('editUser', { errors: {} })
 });
 //app.get("/users/userDelete/:id", usersController.userDelete);
-app.get("/users/adminDelete/:id", usersController.adminDelete);
-app.get("/users/makeAdmin/:id", usersController.makeAdmin);
-app.post("/users/update/:id", usersController.update);
+app.get("/users/adminDelete/:id",authMiddleware, usersController.adminDelete);
+app.get("/users/makeAdmin/:id",authMiddleware, usersController.makeAdmin);
+app.post("/users/update/:id",authMiddleware, usersController.update);
 
 /* Admin page */
-app.get("/adminPage", adminController.adminControls);
+app.get("/adminPage",authMiddleware, adminController.adminControls);
 
 /* Saved */
 app.post("/api/saved", savedApiController.create);
@@ -107,7 +107,6 @@ app.get("/saved", authMiddleware, savedController.list, (req, res) => {
 });
 
 app.get("/user/unsave/:id",usersController.unsave);
-
 
 
 /* Local app */

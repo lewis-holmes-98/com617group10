@@ -10,7 +10,7 @@ const userSchema = new Schema(
         email: { type: String, required: [true, 'Please provide an email address.'], index: { unique: true } },
         emailOptIn: {type: Boolean},
         //profilePic: {type: Buffer},
-        isAdmin: {type: Boolean},
+        level: {type: Number},
         password: { type: String, required: [true, 'Please create a password.'], 
                                     minLength: [4, "Password too short."],
                                     maxLength: [14, "Password too long."] },

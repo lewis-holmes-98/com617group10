@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My account</title>
+</head>
+<body>
+    <%- include('common/header'); -%>
+    <p><%= userToChange.id %></p>
+    <form method="POST" action="/users/update/<%= userToChange.id %>">
+        <div class="form-group">
+            <label for="username">username</label>
+            <input
+            type="username"
+            class="form-control"
+            id="username"
+            name="username"
+            value="<%= userToChange.username %>"
+            placeholder="Username..."/>
+            <% if (typeof errors !=  'undefined') {%>
+                <% if (errors['username']) { %>
+                    <p style="color: red"><%= errors['username'].message %></p>
+            <% } }%>
+        </div>
+
+        <div class="form-group">
+            <label for="name">name</label>
+            <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="<%= userToChange.name %>"
+            placeholder="Username..."/>
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            value="<%= userToChange.email %>"
+            placeholder="Email..."/>
+            <% if (typeof errors !=  'undefined') {%>
+                <% if (errors['email']) { %>
+                    <p style="color: red"><%= errors['email'].message %></p>
+            <% } }%>
+        </div>
+
+        <div>
+            <input hidden
+            type="text"
+            id="id"
+            name="id"
+            value="<%= userToChange.id %>"/>
+        </div>
+        <div>
+            <% if(user.level == 3 && userToChange.level !=3) { %>
+                <label for="level">Role</label>
+                <select name="level" id="level">
+                    <option value="1">User</option>
+                    <option value="2">Admin</option>
+                </select> 
+            <% } %>
+        </div>
+        <button type="submit">Update details</button>
+    </form>
+    <% if(user.level !=1) { %>
+    <a href="/users/adminDelete/<%= userToChange.id %>">Delete</a><% } %>
+    <% if(user.level ==1) { %>
+        <a href="/users/userDelete/<%= user.id %>">Delete</a><% } %>
+
+</body>
+</html>
+
+<script>
+    function setSelectedType(elementToChange, valueToSet) {
+      for ( var i = 0; i < elementToChange.options.length; i++ ) {
+          if (valueToSet == 1) valueToSet = "User"
+          if (valueToSet == 2) valueToSet = "Admin"
+        if ( elementToChange.options[i].text == valueToSet ) {
+            elementToChange.options[i].selected = true;
+            return;
+        }
+      }
+    }
+    setSelectedType(document.getElementById("level"),"<%=userToChange.level%>");
+  </script>

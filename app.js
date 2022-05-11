@@ -15,6 +15,7 @@ const resortsController = require("./controllers/resort");
 const usersController = require("./controllers/user");
 const savedApiController = require("./controllers/api/saved");
 const savedController = require("./controllers/saved");
+const adminController = require("./controllers/admin");
 
 /* Database */
 mongoose.connect(MONGODB_URI, { 
@@ -30,6 +31,7 @@ mongoose.connect(MONGODB_URI, {
       console.log("Not connecting to database.");
       process.exit();
     });
+
 
 /* Middleware */
 app.use(express.static(path.join(__dirname, "public")));
@@ -56,15 +58,26 @@ const authMiddleware = async (req, res, next) => {
   next()
 }
 
+const authEdit = async (req, res, next) => {
+  const user = await User.findById(req.session.userID);
+  if(!(user.level == 2 || user.level == 3 || req.session.userID == req.params.id)) {
+    return res.redirect('/');
+  }
+  next()
+}
+
+
 /* App routes */
 app.get("/", resortsController.list);
 
 
 app.get("/resort/:id",resortsController.details, (req, res) => {
+  console.log("H1")
     res.render('resort', { errors: {} })
 });
 
-// /* Users */
+
+/* Users */
 app.get("/signup", (req, res) => {
   res.render('signup', { errors: {} })
 });
@@ -83,7 +96,17 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/user/unsave/:id",usersController.unsave);
+app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {
+  console.log("H")
+  res.render('editUser', { errors: {} })
+});
+//app.get("/users/userDelete/:id", usersController.userDelete);
+app.get("/users/adminDelete/:id",authMiddleware, usersController.adminDelete);
+app.get("/users/makeAdmin/:id",authMiddleware, usersController.makeAdmin);
+app.post("/users/update/:id",authMiddleware, usersController.update);
+
+/* Admin page */
+app.get("/adminPage",authMiddleware, adminController.adminControls);
 
 /* Saved */
 app.post("/api/saved", savedApiController.create);
@@ -91,6 +114,8 @@ app.post("/api/saved", savedApiController.create);
 app.get("/saved", authMiddleware, savedController.list, (req, res) => {
   res.render("saved", { errors: {} });
 });
+
+app.get("/user/unsave/:id",usersController.unsave);
 
 
 /* Local app */

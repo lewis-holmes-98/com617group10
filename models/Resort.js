@@ -5,7 +5,6 @@ const resortSchema = new Schema(
     {
         name: {type:String},
         formattedName: {type:String, unique: true}, // What we show to user  
-        bestWeekWindow: {type:String},
         lat: {type:Number},
         long: {type:Number}
     },

@@ -2,6 +2,7 @@
 <html>
 <body>
   <header>
+
     <div>
       <nav class="bg-slate-500 shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
@@ -102,6 +103,21 @@
         </div>
       </nav>
     </div>
+
+    <ul class = "navbar">
+     <li><a href="/"> Resorts </a></li> 
+      <% if(user) { %>
+      <li><a href="/logout"> <%= user.username %> (Logout)</a></li>
+      <li><a href="/saved"> Saved</a></li>
+      <li><a href="/users/editUser/<%= user.id %>"> Account Settings</a></li>
+      <% if(!(user.level == 1)) { %><li><a href="/adminPage"> Admin Controls</a></li><% } %>
+      <%
+      }%> <% if(!user) { %>
+      <li><a href="/login"> Login </a></li>
+      <li><a class="nav-link" href="/signup"> Register </a></li>
+      <% } %>
+    </ul>
+
   </header>
 
 </body>

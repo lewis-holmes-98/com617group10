@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My account</title>
+</head>
+<body>
+    <%- include('common/header'); -%>
+
+    <p>Number of users:<%= numUsers %></p>
+    <p>Number of admins:<%= numAdmins %></p>
+    <p>Saves per resort:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of saves</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% resortSaves.forEach(resort => { %>
+                <tr>
+                    <td><%= resort.name %></td>
+                    <td><%= resort.count %></td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(account => { %>
+                <tr>
+                    <td><%= account.username %></td>
+                    <td><%= account.name %></td>
+                    <td><%= account.email %></td>
+                    <td>
+                        <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>">Edit User</a><% } %>  
+                    </td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -2,49 +2,42 @@
     {
       "name" :"brides_les_bains",
       "formattedName":"Brides-les-bains",
-      "bestWeekWindow":"21/12",
       "lat":45.452280 ,
       "long":6.566388
     },
     {
       "name" :"orelle",
       "formattedName":"Orelle",
-      "bestWeekWindow":"04/01",
       "lat":45.207662,
       "long":6.545390
     },
     {
       "name" :"courchevel",
       "formattedName":"Courchevel",
-      "bestWeekWindow":"21/12",
       "lat":45.430893,
       "long":6.620386
     },
     {
       "name" :"les_menuires",
       "formattedName":"Les Menuires",
-      "bestWeekWindow":"21/12",
       "lat":45.324114,
       "long":6.537450
     },
     {
       "name" :"saint_martin",
       "formattedName":"Saint-Martin-de-Belleville",
-      "bestWeekWindow":"21/12",
       "lat":45.379172,
       "long":6.50551
     },
     {
       "name" :"meribel",
       "formattedName":"Méribel",
-      "bestWeekWindow":"21/12",
       "lat":45.398883,
       "long":6.565651
     },
     {
       "name" :"val_thorens",
       "formattedName":"Val Thorens",
-      "bestWeekWindow":"01/01",
       "lat":45.298721,
       "long":6.580011
     }

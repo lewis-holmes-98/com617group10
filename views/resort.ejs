@@ -17,7 +17,7 @@
     <p>The current weather is<b> <%= weatherData.weather[0].description%>  </b></p>
     <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 
     <p> Wind Speed (m/s): <%= weatherData.wind.speed%>  </p> 
-    <p>Our Algorithm predicts the best 6 week window start from: <%= resortDetails.bestWeekWindow %></p>
+    <p>Our Algorithm predicts the best 6 week window start from: <%=bestDate %></p>
     <p>The previous two weeks of weather:</p>  
     
     

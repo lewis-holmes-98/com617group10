@@ -17,7 +17,12 @@ exports.details = async (req, res) => {
     try {
         const resortDetails = await Resorts.findOne({name: id});
         const resortId = resortDetails._id;
-        resortHistoric = await Historics.find({resort_id: resortId});
+
+        const weekStart = await Historics.find({resort_id: resortId}).sort({forwardscore: -1}).limit(1).select("dayofyear -_id");
+        const weekStartDay = await weekStart[0].dayofyear
+        const emptyDate = new Date(2023,0);
+        const bestDate = new Date(emptyDate.setDate(weekStartDay)).toLocaleDateString()
+
         link = "https://api.openweathermap.org/data/2.5/weather?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&appid=2afd68316886e4f486a125facf22718d"
         const response = await axios.get(link).then(res => res.data)
         .catch(function (error) {
@@ -41,8 +46,7 @@ exports.details = async (req, res) => {
             console.log(error);
         });
         oneWeekweatherData = response3
-        res.render("resort", { resortDetails: resortDetails, weatherData: weatherData, twoWeekData: twoWeekweatherData, oneWeekData: oneWeekweatherData});
-        
+        res.render("resort", { resortDetails: resortDetails, weatherData: weatherData, twoWeekData: twoWeekweatherData, oneWeekData: oneWeekweatherData,bestDate:bestDate});       
      } catch (e) {
          res.status(404).send({message: JSON.stringify(e)})
      }

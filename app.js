@@ -86,10 +86,11 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/myAccount",usersController.update, (req, res) => {
-  res.render('myAccount', { errors: {} })
+app.get("/editUser",usersController.update, (req, res) => {
+  res.render('editUser', { errors: {} })
 });
-
+app.get("/users/adminDelete/:id", usersController.adminDelete);
+app.get("/users/makeAdmin/:id", usersController.makeAdmin);
 
 /* Admin page */
 app.get("/adminPage", adminController.adminControls);

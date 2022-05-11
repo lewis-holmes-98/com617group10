@@ -2,7 +2,6 @@ const User = require("../../models/User");
 
 exports.create = async (req, res) => {
       const resortId = req.body.id;
-      console.log(resortId);
       if ( !(resortId) || req.session.userID) {
         res.json({result: 'error'});
       }

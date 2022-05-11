@@ -4,17 +4,17 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
-const router = express.Router();
+// const router = express.Router();
 
 // Controllers
-const resortsController = require("./controllers/resort");
+// const resortsController = require("./controllers/resort");
 
 const indexRouter = require("./routes/index")
 // const weatherRouter = require("./routes/weather")
-const resortsRouter = require("./routes/resorts")
+const resortsRouter = require("./routes/resort")
 const testAPIRouter = require("./routes/testAPI")
 const testDBRouter = require("./routes/testDB");
-const courchevelController  = require("../controllers/resort");
+// const courchevelController  = require("../controllers/resort");
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-app.use(express.static(path.join(__dirname, "public")));
+
 
 
 // fetch all available database data
@@ -39,20 +39,21 @@ app.use(express.static(path.join(__dirname, "public")));
 // })
 
 // routes
-app.get("/", resortsController.list);
+// app.get("/resort", resortsRouter.list);
 
 
-app.get("/resort/:id",resortsController.details, (req, res) => {
-    res.render('resort', { errors: {} })
-});
+// app.get("/resort/:id",resortsRouter.details, (req, res) => {
+//     res.send('resort', { errors: {} })
+// });
 
 app.use("/", indexRouter)
 app.use("/testAPI", testAPIRouter)
 app.use("/testDB", testDBRouter)
-app.use("/courchevel", courchevelController.courchevel)
+// app.use("/courchevel", courchevelController.courchevel)
+app.use("/resort", resortsRouter.list)
 
 
-
+app.use(express.static(path.join(__dirname, "public")));
 
 
 module.exports = app;

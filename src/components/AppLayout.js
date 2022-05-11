@@ -12,6 +12,7 @@ import Login from './Login.js';
 import Signup from "./Signup.js";
 import NotFound from "./NotFound.js";
 import Modal from "./Modal.js";
+import Resort from "./Resorts"
 
 import '../main.css';
 
@@ -34,6 +35,7 @@ const AppLayout = ({ children }) => {
                                 <Route path="/map" element={<Map />} />
                                 <Route path="/weather" element={<Weather />} />
                                 <Route path="/contact" element={<Contact />} />
+                                <Route path="/resort" element={<Resort />} />
                                 <Route path="*" element={<NotFound />} />
                             </Route>
                         </Routes>

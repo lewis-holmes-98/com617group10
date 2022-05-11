@@ -1,11 +1,13 @@
-const Resorts = require("../models/Resort");
-const Historics = require("../models/Historic");
+const Resorts = require("../../models/Resort");
+const Historics = require("../../models/Historic");
 const axios = require("axios");
+const express = require('express');
+const router = express.Router();
 
 exports.list = async (req, res) => {
     try {
         const resorts = await Resorts.find({});
-        res.render("index", { resorts: resorts });
+        res.send("index", { resorts: resorts });
         
     } catch (e) {
         res.status(404).send({message: "ERROR"})
@@ -25,9 +27,12 @@ exports.details = async (req, res) => {
             console.log(error);
         });
         weatherData = response
-        res.render("resort", { resortDetails: resortDetails, weatherData: weatherData});
+        res.send("resort", { resortDetails: resortDetails, weatherData: weatherData});
         
      } catch (e) {
          res.status(404).send({message: JSON.stringify(e)})
      }
 };
+
+
+module.exports = router;

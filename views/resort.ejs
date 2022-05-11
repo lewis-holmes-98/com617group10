@@ -12,8 +12,10 @@
 <body>
     <%- include('common/header'); -%>
 
+    <h2><%= resortDetails.formattedName %></h2>
     
-    <h2><%= resortDetails.formattedName %></h2><% if(user) { %><a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a><% } %>
+    <% if(user) { %><a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a><% } %>
+
     <p>The current weather is<b> <%= weatherData.weather[0].description%>  </b></p>
     <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 
     <p> Wind Speed (m/s): <%= weatherData.wind.speed%>  </p> 
@@ -48,6 +50,10 @@
                 <td><%=oneWeekData.list[i].wind.speed%></td>
             </tr>
         <%}%>
-    </table>   
+    </table> 
+    <h3>Users who have saved this resort:</h3>
+    <% usersSaved.forEach(user => { %>
+        <p><%= user.username %></p>
+    <%})%>
 </body>
 </html>

@@ -170,6 +170,15 @@ exports.update = async (req, res) => {
                 email: newEmail
             }
         });
+
+        if(req.body.level) {
+        await User.updateOne({_id: userToUpdateId},
+            {$set: {
+                level: req.body.level
+            }
+        })
+        };
+
         const updatedUser = await User.findOne({_id: userToUpdateId });
         res.render('editUser', { 
             errors: {} , 

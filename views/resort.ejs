@@ -18,8 +18,36 @@
     <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 
     <p> Wind Speed (m/s): <%= weatherData.wind.speed%>  </p> 
     <p>Our Algorithm predicts the best 6 week window start from: <%= resortDetails.bestWeekWindow %></p>
-    <p>The previous two weeks of weather:</p>    
+    <p>The previous two weeks of weather:</p>  
     
     
+    <table>
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Weather</td>
+                <td>Temperature (°C)</td>
+                <td>Wind Speed (m/s)</td>
+            </tr>
+        </thead>
+        <% 
+        for (let i = 0; i < twoWeekData.cnt; i+=24){ %>
+            <tr>
+                <td><%=new Date(twoWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
+                <td><%=twoWeekData.list[i].weather[0].description%></td>
+                <td><%=(twoWeekData.list[i].main.temp-273).toFixed(2) %></td>
+                <td><%=twoWeekData.list[i].wind.speed%></td>
+            </tr>
+        <%}%>
+        <% 
+        for (let i = 0; i < oneWeekData.cnt; i+=24){ %>
+            <tr>
+                <td><%=new Date(oneWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
+                <td><%=oneWeekData.list[i].weather[0].description%></td>
+                <td><%=(oneWeekData.list[i].main.temp-273).toFixed(2) %></td>
+                <td><%=oneWeekData.list[i].wind.speed%></td>
+            </tr>
+        <%}%>
+    </table>   
 </body>
 </html>

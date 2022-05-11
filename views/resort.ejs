@@ -13,8 +13,18 @@
     <%- include('common/header'); -%>
 
     <h2><%= resortDetails.formattedName %></h2>
-    
-    <% if(user) { %><a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a><% } %>
+    <% savedResort=false %> 
+    <% if (user) {%>
+        <% for (let i = 0; i < user.saved.length; i++){ %>
+            <%if (resortDetails.id == user.saved[i]){%>
+                <% savedResort=true;%>
+    <%}}}%>
+
+
+    <% if(!savedResort && user) { %><a href="#"  onclick="handleSave('<%= resortDetails.id %>')" class="link">Save</a><% } %>
+    <% if(savedResort && user) { %><a href="/user/unsave/<%=resortDetails.id%>" class="link link-primary">Unsave</a> <% } %>
+
+
 
     <p>The current weather is<b> <%= weatherData.weather[0].description%>  </b></p>
     <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 

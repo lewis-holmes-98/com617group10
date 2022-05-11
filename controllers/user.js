@@ -69,13 +69,14 @@ exports.unsave = async (req, res) => {
     try {
         const resortId = req.params.id;
         const userId = req.session.userID;
+        console.log(req.url)
         await User.updateOne(
         { _id:userId}, {
             $pull: {
             saved: resortId
             }
         });
-        res.redirect("/saved");
+        res.redirect("/");
     } catch (e) {
         res.status(404).send({
         message: `Cannot leave -  error ${id}.`,

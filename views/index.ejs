@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,29 @@
     <title>Resorts</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
+
     <div class="">
         <%- include('common/header'); -%>
-        
-        <% resorts.forEach(resort => { %>
-            <a href="resort/<%= resort.name %>" class="link"><%= resort.formattedName %></a>
-        </br>
-            <%})%>
     </div>
+
+    <main class="container mx-auto mt-4 px-4">
+        <div class="text-center pt-4 pb-4">
+            <p class="blog-header-logo text-2xl">Resorts</p>
+        </div>
+        <div class="flex justify-center">
+            <div class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 border-slate-500 max-w-sm">
+                <% resorts.forEach(resort=> { %>
+                    <div class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                        <a href="resort/<%= resort.name %>" class="link">
+                            <%= resort.formattedName %>
+                        </a>
+                    </div>
+                    <%})%>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>

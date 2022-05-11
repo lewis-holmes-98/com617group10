@@ -31,30 +31,35 @@
               <div class="hidden md:flex items-center space-x-3">
 
                 <% if(user) { %>
-
-                  
                   <a href="/saved"
                     class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
                     Saved</a>
-                  <% }%>
 
-                  <% if(!user) { %>
-                      <a href="/login"
-                        class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
-                        Login </a>
-                      <a class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"
-                        href="/signup"> Register </a>
-                  <% } %>
-
-                  <a href="/users/editUser/<%= user.id %>" class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Account Settings</a>
-                  <% if(!(user.level==1)) { %>
-                    <a href="/adminPage" class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Admin Controls</a>
-                  <% } %>
-                  
                   <a href="/logout"
                     class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
                     <%= user.username %> (Logout)
                   </a>
+
+                  <a href="/users/editUser/<%= user.id %>"
+                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    Account Settings</a>
+                <% }%>
+
+                <% if(!user) { %>
+                      <a href="/login"
+                        class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                        Login </a>
+
+                      <a class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"
+                        href="/signup"> Register </a>
+                <% } %>
+  
+                <% if(!(user.level==1)) { %>
+                          <a href="/adminPage"
+                            class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                            Admin Controls</a>
+                <% } %>
+                            
               </div>
             </div>
 

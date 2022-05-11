@@ -86,9 +86,8 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/editUser",usersController.update, (req, res) => {
-  res.render('editUser', { errors: {} })
-});
+app.get("/users/editUser/:id",usersController.edit);
+//app.get("/users/userDelete/:id", usersController.userDelete);
 app.get("/users/adminDelete/:id", usersController.adminDelete);
 app.get("/users/makeAdmin/:id", usersController.makeAdmin);
 

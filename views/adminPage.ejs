@@ -25,7 +25,7 @@
                     <td><%= account.name %></td>
                     <td><%= account.email %></td>
                     <td>
-                        <% if(account.level == 'U') { %><a href="/users/accountSettings/<%= account.id %>">Edit User</a><% } %>  
+                        <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>">Edit User</a><% } %>  
                     </td>
                 </tr>
             <%})%>

@@ -86,17 +86,16 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/myAccount",usersController.update, (req, res) => {
+app.get("/myAccount",usersController.edit, (req, res) => {
   res.render('myAccount', { errors: {} })
 });
+
+app.post("/update/:id",usersController.update);
+
 
 
 /* Admin page */
 app.get("/adminPage", adminController.adminControls);
-// app.get("/adminPage",adminController.adminControls, (req, res) => {
-//   res.render('adminPage', { errors: {} })
-// });
-
 
 /* Saved */
 app.post("/api/saved", savedApiController.create);

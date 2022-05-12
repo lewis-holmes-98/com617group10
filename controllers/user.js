@@ -55,7 +55,11 @@ exports.create = async (req, res) => {
         }
         await user.save();
 
-
+        try{
+            emailService.signUpEmail(req.body.email);
+        }catch(e){
+            console.log(e)
+        }
         res.redirect('/?message=user saved')
     } catch (e) {
         if (e.errors) {

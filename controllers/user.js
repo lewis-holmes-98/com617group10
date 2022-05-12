@@ -111,6 +111,19 @@ exports.adminDelete = async (req, res) => {
     }
   };
 
+  exports.userDelete = async (req, res) => {
+    const id = req.params.id;
+    try {
+      await User.findByIdAndRemove(id);
+      console.log("User deleted: " + req.params.id)
+      res.redirect("/");
+    } catch (e) {
+      res.status(404).send({
+        message: `unable to delete user ${id}.`,
+      });
+    }
+  };
+
   exports.makeAdmin= async (req, res) => {
     const id = req.params.id;
     try {
@@ -161,6 +174,15 @@ exports.update = async (req, res) => {
                 email: newEmail
             }
         });
+
+        if(req.body.level) {
+        await User.updateOne({_id: userToUpdateId},
+            {$set: {
+                level: req.body.level
+            }
+        })
+        };
+
         const updatedUser = await User.findOne({_id: userToUpdateId });
         res.render('editUser', { 
             errors: {} , 

@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
   <%- include('common/header'); -%>
-  <main class="container" style="flex: 1 0 auto;">
+  
+  <main class="container mx-auto mt-8 px-4 pt-6 object-fill max-w-md bg-gray-50">
   
       <div class="text-center">
         <p class="blog-header-logo text-dark">Create an account</p>
@@ -16,12 +18,11 @@
   
       <div class="d-flex justify-content-center align-items-center">
         <form method="POST" action="/signup">
-  
-          <div class="form-group">
-            <label for="name">Username (Required)</label>
+          <div class="form-group mb-4 px-5 pt-5">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username (Required)</label>
             <input
               type="username"
-              class="form-control"
+              class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               id="username"
               name="username"
               placeholder="Create a username"/>
@@ -31,11 +32,11 @@
               <% } %>
           </div>
 
-          <div class="form-group">
-              <label for="name">Name (Required)</label>
+          <div class="form-group mb-4 px-5 pt-5"">
+              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name (Required)</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="name"
                 name="name"
                 placeholder="¿Comment t'appelle tu? 🥐"/>
@@ -45,11 +46,11 @@
                 <% } %>
             </div>
     
-          <div class="form-group">
-            <label for="name">Email (Required)</label>
+          <div class="form-group mb-4 px-5 pt-5">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email (Required)</label>
             <input
               type="email"
-              class="form-control"
+              class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               id="email"
               name="email"
               placeholder="email@email.com"/>
@@ -59,19 +60,21 @@
             <% } %>
           </div>
   
-          <div class="form-group">
-            <label for="password">Password (Required)</label>
-            <input type="password" class="form-control" name="password" placeholder = "Create a password"/>
+          <div class="form-group mb-4 px-5 pt-5"">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password (Required)</label>
+            <input type="password" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="password" placeholder = "Create a password"/>
             <% if (errors['password']) { %>
             <p style="color: red"><%= errors['password'].message %></p>
             <% } %>
           </div>
 
-          <input type="checkbox" id="emailYes" name="emailYes" value="Opt in to receive emails?" checked>
-          <label for="emailYes">Receive emails from us?</label><br>
-  
-      
-          <button type="submit" style="margin-top: 1rem;margin-bottom: 2rem;" class="btn btn-primary">Create account</button>
+          <div class="mb-4 px-5 pt-5">
+            <input type="checkbox" id="emailYes" name="emailYes" value="Opt in to receive emails?" checked>
+            <label for="emailYes" class="">Receive emails from us?</label><br>
+          </div>
+          <div class="pb-4 px-5 pt-5 flex justify-center">
+            <button type="submit" class="btn btn-primary py-4 px-5 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Create account</button>
+          </div>
         </form>
       </div>
   

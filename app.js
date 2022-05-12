@@ -100,7 +100,8 @@ app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {
   console.log("H")
   res.render('editUser', { errors: {} })
 });
-//app.get("/users/userDelete/:id", usersController.userDelete);
+
+app.get("/users/userDelete/:id", authEdit, usersController.userDelete);
 app.get("/users/adminDelete/:id",authMiddleware, usersController.adminDelete);
 app.get("/users/makeAdmin/:id",authMiddleware, usersController.makeAdmin);
 app.post("/users/update/:id",authMiddleware, usersController.update);

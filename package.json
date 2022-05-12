@@ -17,15 +17,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.16",
-    "toad-scheduler": "^1.6.0"
+    "toad-scheduler": "^1.6.0",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24"
   },
   "bugs": {
     "url": "https://github.com/lewis-holmes-98/com617group10/issues"
   },
   "engines": {
-    "node": "14.x"
+    "node": "17.x"
   },
   "homepage": "https://github.com/lewis-holmes-98/com617group10#readme",
   "dependencies": {

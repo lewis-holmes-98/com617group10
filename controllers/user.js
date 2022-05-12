@@ -2,6 +2,7 @@ const Resorts = require("../models/Resort");
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const emailService = require('../emailService.js');
+const { off } = require("../models/Resort");
 
 
 exports.login = async (req, res) => {
@@ -32,13 +33,15 @@ exports.login = async (req, res) => {
 exports.create = async (req, res) => {
     try {
 
+        if (req.body.emailYes) emailOpt = true
+        else emailOpt = false
         const user = new User({ 
             username: req.body.username,
             name: req.body.name, 
             email: req.body.email, 
             password: req.body.password,
             level:1,
-            emailOptIn: true // TODO: fix this to receive the checkbox
+            emailOptIn: emailOpt
             });
 
         const userWithProposedEmail = await User.findOne({ email: req.body.email })

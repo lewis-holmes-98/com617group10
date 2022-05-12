@@ -21,6 +21,7 @@
             </div>
 
         <div class="py-2 px-2 max-w-sm">
+            <% const saveMenu = true %>
             <% const savedResorts = resorts  %>
             <% savedResorts.forEach(resort => { %>
             <div class="py-2">    
@@ -28,10 +29,10 @@
                     <p class=" text-lg py-1 font-bold underline decoration-1"><%= resort.formattedName %></p>
                 </div>
                 <div>
-                    <a href="resort/<%= resort.name %>" class="btn btn-primary px-1 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Go to resort </a>
+                    <a href="/resort/<%= resort.name %>" class="btn btn-primary px-1 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"> Go to resort </a>
                 </div>
                 <div>
-                    <a href="/user/unsave/<%= resort.id %>" class="btn btn-primary px-1 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Unsave</a> 
+                    <a href="/saved/unsave/<%= resort.id %>" class="btn btn-primary px-1 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Unsave</a> 
                 </div>
             </div>                       
             <% } )%>

@@ -76,18 +76,38 @@ exports.create = async (req, res) => {
     }
 };
 
+
+exports.save = async (req, res) => {
+    try {
+        const resortId = req.params.id;
+        const userId = req.session.userID;
+        const resortName = await Resorts.findOne({_id: resortId})
+        console.log(resortName.name)
+        await User.updateOne({ _id: userId}, {$addToSet:{saved: resortId}});
+        res.redirect(`/resort/`+resortName.name);
+    } catch (e) {
+        res.status(404).send({
+        message: `Cannot leave -  error ${id}.`,
+        });
+    }
+};
+
+
 exports.unsave = async (req, res) => {
     try {
         const resortId = req.params.id;
         const userId = req.session.userID;
-        console.log(req.url)
+        const resortName = await Resorts.findOne({_id: resortId})
+
         await User.updateOne(
         { _id:userId}, {
             $pull: {
             saved: resortId
             }
         });
-        res.redirect("/");
+        
+        res.redirect(`/resort/`+resortName.name);
+        
     } catch (e) {
         res.status(404).send({
         message: `Cannot leave -  error ${id}.`,

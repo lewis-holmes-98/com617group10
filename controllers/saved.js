@@ -12,3 +12,30 @@ exports.list = async (req, res) => {
       res.json({result: 'No saves - saved.js'}); 
     }
 }
+
+
+exports.unsave = async (req, res) => {
+  try {
+
+    console.log("vs")
+      const resortId = req.params.id;
+      const userId = req.session.userID;
+
+      await User.updateOne(
+      { _id:userId}, {
+          $pull: {
+          saved: resortId
+          }
+      });
+
+      const userRef = await User.findOne({_id: userId});
+      const savedResorts = await Resort.find({
+          _id: {$in: userRef.saved}});
+      res.render('saved', {resorts: savedResorts});
+
+  } catch (e) {
+      res.status(404).send({
+      message: `Cannot leave -  error ${id}.`,
+      });
+  }
+};

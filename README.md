@@ -24,5 +24,5 @@ TODO: Calc best 6 week window every day
 TODO: update score every day
 
 2. `npm run dev`
-3. `npm run seed` (use `npm run seedProduction` for production database)
+3. `npm run seed` (use `npm run seedProduction` for production database). **please do not run this**
 

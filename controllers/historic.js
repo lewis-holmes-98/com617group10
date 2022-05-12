@@ -1,1 +1,0 @@
-const historics = require("../models/Historic");

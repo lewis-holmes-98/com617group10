@@ -18,7 +18,8 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "toad-scheduler": "^1.6.0"
   },
   "bugs": {
     "url": "https://github.com/lewis-holmes-98/com617group10/issues"
@@ -37,11 +38,14 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "jquery": "^3.6.0",
     "loading-cli": "^1.1.0",
     "md5": "^2.3.0",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.10",
     "node-fetch": "^3.2.4",
+    "nodemailer": "^6.7.5",
+    "xhr2": "^0.2.1",
     "xmlhttprequest": "^1.8.0"
   }
 }

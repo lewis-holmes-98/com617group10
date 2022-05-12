@@ -1,6 +1,8 @@
 const Resorts = require("../models/Resort");
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const emailService = require('../emailService.js');
+
 
 exports.login = async (req, res) => {
     try {
@@ -52,6 +54,8 @@ exports.create = async (req, res) => {
             return;
         }
         await user.save();
+
+
         res.redirect('/?message=user saved')
     } catch (e) {
         if (e.errors) {

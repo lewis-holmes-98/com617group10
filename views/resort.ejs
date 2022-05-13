@@ -23,38 +23,64 @@
             </div>
             
             <div class="py-2">
-                <p class="text-center">The current weather is:</p>
-                <p class="text-center">Weather placeholder</p>
-            </div>
-            
-            <div class="py-2">
-                <p class="text-center">API request:</p>
-                <p class="text-center">API request placeholer</p>
+                <div id="curWeath" class="py-1">
+                    <p class="text-center">The current weather is:</p>
+                    <p class="text-center font-semibold"><%= weatherData.weather[0].description%></p>
+                </div>
+
+                <div id="temp" class="py-1">
+                    <p class="text-center"> Temperature:</p>
+                    <p class="text-center font-semibold"><%= (weatherData.main.temp-273).toFixed(2)%>°C</p>
+                </div>
+
+                <div id="wind" class="py-1">
+                    <p class="text-center"> Wind Speed:</p>
+                    <p class="text-center font-semibold"><%= weatherData.wind.speed%> m/s</p>
+                </div>
             </div>
 
-            <div class="py-2">
-                <p class="text-center">The previous two weeks of weather:</p>
-                <p class="text-center">Two weeks of weather placeholder</p>
-            </div>
-
-            <div class="py-2">
+            <div id="bestDate" class="py-2">
                 <p class="text-center">Our Algorithm predicts the best 6 week window starts from: </p>
-                <p class="text-center"><%= resortDetails.bestWeekWindow %></p>
+                <p class="text-center font-semibold"><%=bestDate %></p>
             </div>
 
-            <div class="py-2">
-                <p class="text-center"> Temperature: </p>
-                <p class="text-center"><%= (weatherData.main.temp-273).toFixed(3)%></p>
+            <div id="prevWeath" class="py-2">
+                <p class="text-center">The previous two weeks of weather:</p> 
+                <table class="table-auto">
+                    <thead>
+                        <tr class="py-3">
+                            <td class="px-2 text-center">Date</td>
+                            <td class="px-2 text-center">Weather</td>
+                            <td class="px-2 text-center">Temperature (°C)</td>
+                            <td class="px-2 text-center">Wind Speed (m/s)</td>
+                        </tr>
+                    </thead>
+                    <% 
+                    for (let i = 0; i < twoWeekData.cnt; i+=24){ %>
+                        <tr class="py-3">
+                            <td class="px-2 text-center"><%=new Date(twoWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
+                            <td class="px-2 text-center "><%=twoWeekData.list[i].weather[0].description%></td>
+                            <td class="px-2 text-center"><%=(twoWeekData.list[i].main.temp-273).toFixed(2) %></td>
+                            <td class="px-2 text-center"><%=twoWeekData.list[i].wind.speed%></td>
+                        </tr>
+                    <%}%>
+                    <% 
+                    for (let i = 0; i < oneWeekData.cnt; i+=24){ %>
+                        <tr class="py-3">
+                            <td class="px-2 text-center"><%=new Date(oneWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
+                            <td class="px-2 text-center"><%=oneWeekData.list[i].weather[0].description%></td>
+                            <td class="px-2 text-center"><%=(oneWeekData.list[i].main.temp-273).toFixed(2) %></td>
+                            <td class="px-2 text-center"><%=oneWeekData.list[i].wind.speed%></td>
+                        </tr>
+                    <%}%>
+                </table> 
             </div>
 
-            <div class="py-2">
-                <p class="text-center"> Type: </p>
-                <p class="text-center"><%= weatherData.weather[0].description%></p>
-            </div>
-
-            <div class="py-2">
-                <p class="text-center"> Wind Speed (m/s): </p>
-                <p class="text-center"><%= weatherData.wind.speed%></p>
+            <div id="usersSaved" class="py-2 text-center">
+                <p>Users who have saved this resort:</p>
+                <% usersSaved.forEach(user => { %>
+                    <p><%= user.username %></p>
+                <%})%>
             </div>
             
             <div class="flex justify-center">
@@ -62,7 +88,6 @@
             </div>
     </main>
 
-    <h2><%= resortDetails.formattedName %></h2>
     <% savedResort=false %> 
     <% if (user && user.saved != null) {%>
         <% for (let i = 0; i < user.saved.length; i++){ %>
@@ -73,48 +98,6 @@
 
     <% if(!savedResort && user) { %><a href="/user/save/<%=resortDetails.id%>" class="link">Save</a><% } %>
     <% if(savedResort && user) { %><a href="/user/unsave/<%=resortDetails.id%>" class="link link-primary">Unsave</a> <% } %>
-
-
-
-    <p>The current weather is<b> <%= weatherData.weather[0].description%>  </b></p>
-    <p> Temperature: <%= (weatherData.main.temp-273).toFixed(2)%>°C  </p> 
-    <p> Wind Speed (m/s): <%= weatherData.wind.speed%>  </p> 
-    <p>Our Algorithm predicts the best 6 week window start from: <%=bestDate %></p>
-    <p>The previous two weeks of weather:</p>  
-    
-    
-    <table>
-        <thead>
-            <tr>
-                <td>Date</td>
-                <td>Weather</td>
-                <td>Temperature (°C)</td>
-                <td>Wind Speed (m/s)</td>
-            </tr>
-        </thead>
-        <% 
-        for (let i = 0; i < twoWeekData.cnt; i+=24){ %>
-            <tr>
-                <td><%=new Date(twoWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
-                <td><%=twoWeekData.list[i].weather[0].description%></td>
-                <td><%=(twoWeekData.list[i].main.temp-273).toFixed(2) %></td>
-                <td><%=twoWeekData.list[i].wind.speed%></td>
-            </tr>
-        <%}%>
-        <% 
-        for (let i = 0; i < oneWeekData.cnt; i+=24){ %>
-            <tr>
-                <td><%=new Date(oneWeekData.list[i].dt*1000).toLocaleDateString("en-GB")%></td>
-                <td><%=oneWeekData.list[i].weather[0].description%></td>
-                <td><%=(oneWeekData.list[i].main.temp-273).toFixed(2) %></td>
-                <td><%=oneWeekData.list[i].wind.speed%></td>
-            </tr>
-        <%}%>
-    </table> 
-    <h3>Users who have saved this resort:</h3>
-    <% usersSaved.forEach(user => { %>
-        <p><%= user.username %></p>
-    <%})%>
 
 </body>
 

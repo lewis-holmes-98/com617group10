@@ -5,55 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>My account</title>
+    <title>Admin Page</title>
 </head>
 <body>
     <%- include('common/header'); -%>
 
-    <p>Number of users:<%= numUsers %></p>
-    <p>Number of admins:<%= numAdmins %></p>
-    <p>Saves per resort:</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Number of saves</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% resortSaves.forEach(resort => { %>
-                <tr>
-                    <td><%= resort.name %></td>
-                    <td><%= resort.count %></td>
-                </tr>
-            <%})%>
-        </tbody>
-    </table>
+    <main class="container mx-auto mt-8 px-4 pt-6 bg-gray-50">
 
+        <div class="text-center pb-4">
+            <p class="blog-header-logo text-dark">User Info</p>
+        </div>
 
-
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% users.forEach(account => { %>
-                <tr>
-                    <td><%= account.username %></td>
-                    <td><%= account.name %></td>
-                    <td><%= account.email %></td>
-                    <td>
-                        <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>">Edit User</a><% } %>  
-                    </td>
-                </tr>
-            <%})%>
-        </tbody>
-    </table>
-
+        <p>Number of users:<%= numUsers %></p>
+        <p>Number of admins:<%= numAdmins %></p>
+        <p>Saves per resort:</p>
+        
+        <div class="py-2">
+            <table class="table-auto border-collapse border border-slate-500">
+                <thead>
+                    <tr>
+                        <th class="px-2 border border-slate-600">Name</th>
+                        <th class="px-2 border border-slate-600">Number of saves</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% resortSaves.forEach(resort => { %>
+                        <tr>
+                            <td class="px-2 text-center border border-slate-600"><%= resort.name %></td>
+                            <td class="px-2 text-center border border-slate-600"><%= resort.count %></td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="py-2">
+            <table class="table-auto border-collapse border border-slate-500">
+                <thead>
+                    <tr>
+                        <th class="px-1 text-center border border-slate-600">Username</th>
+                        <th class="px-1 text-center border border-slate-600">Name</th>
+                        <th class="px-1 text-center border border-slate-600">Email</th>
+                        <th class="px-1 text-center border border-slate-600">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(account => { %>
+                        <tr>
+                            <td class="px-1 text-center border border-slate-600"><%= account.username %></td>
+                            <td class="px-1 text-center border border-slate-600"><%= account.name %></td>
+                            <td class="px-1 text-center border border-slate-600"><%= account.email %></td>
+                            <td class="px-1 text-center border border-slate-600">
+                                <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>">Edit User</a><% } %>  
+                            </td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>

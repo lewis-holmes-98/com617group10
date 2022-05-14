@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const User = require("./models/User");
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, '/views'));
 
 const { PORT, MONGODB_URI } = process.env;
 
@@ -113,6 +114,11 @@ app.get("/user/unsave/:id",usersController.unsave);
 app.get("/user/save/:id",usersController.save);
 
 app.get("/saved/unsave/:id",savedController.unsave);
+
+
+/*Email Users*/
+app.get("/emailUsers",usersController.weatherReport);
+
 
 /* Local app */
 app.listen(PORT, () => {

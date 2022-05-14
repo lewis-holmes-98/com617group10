@@ -22,28 +22,6 @@ transporter.verify(function (error, success) {
   }
 });
 
-
-// const task = new Task('simple task', () => {
-//   console.log('Task triggered');
-//   let info = transporter.sendMail({
-//     from: "snowcoreg10@outlook.com", // sender address
-//     to: "kvpeacock25@gmail.com",
-//     subject: "Thanks for signing up!", // Subject line
-//     text: "Thank you for opting in for emails. Enjoy your daily weather reports.", // plain text body
-//     html: "Thank you for opting in for emails. Enjoy your daily weather reports." // html body
-//   });
-
-//   console.log("Message sent: %s", info.messageId);
-
-// });
-
-// function go(){
-//     const job1 = new SimpleIntervalJob(
-//         { seconds: 100} , task);
-       
-//     scheduler.addSimpleIntervalJob(job1);
-// }
-
 exports.signUpEmail = function(email){    
     try{
         transporter.sendMail({
@@ -57,4 +35,22 @@ exports.signUpEmail = function(email){
         res.status(error.response.status)
         return res.send(error.message);
     }
+}
+
+exports.weatherReport = function(email){
+  try{
+    transporter.sendMail({
+        from: "snowcoreg10@outlook.com", // sender address
+        to: email,
+        subject: "It snowed today!", // Subject line
+        text: "It snowed at one of your favourite resorts today!", // plain text body
+        html: "Visit our website to find out where it's snowing <i>RIGHT NOW!</i>" // html body
+    });
+
+    console.log("Email sent.")
+
+  } catch(error){
+      res.status(error.response.status)
+      return res.send(error.message);
+  }
 }

@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt');
 const emailService = require('../emailService.js');
 const { off } = require("../models/Resort");
 const axios = require("axios");
+require("dotenv").config();
+
+const { OWM_API_KEY } = process.env;
 
 
 exports.login = async (req, res) => {
@@ -240,7 +243,7 @@ exports.weatherReport = async (req, res) => {
         var currentTime= Math.round((new Date()).getTime() / 1000);
         var oneWeek = currentTime - (1*604800);
 
-        link = "http://history.openweathermap.org/data/2.5/history/city?lat="+currentResort.lat+"&lon="+currentResort.long+"&type=hour&start="+oneWeek+"&end="+currentTime+"&appid=2afd68316886e4f486a125facf22718d"
+        link = "http://history.openweathermap.org/data/2.5/history/city?lat="+currentResort.lat+"&lon="+currentResort.long+"&type=hour&start="+oneWeek+"&end="+currentTime+"&appid="+OWM_API_KEY
         
         const response = await axios.get(link).then(res => res.data)
         .catch(function (error) {

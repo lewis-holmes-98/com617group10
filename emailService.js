@@ -1,5 +1,8 @@
 const { ToadScheduler, SimpleIntervalJob, Task, AsyncTask } = require('toad-scheduler')
 const scheduler = new ToadScheduler()
+require("dotenv").config();
+
+const { EMAIL_SERVICE_PASS } = process.env;
 
 const nodemailer = require('nodemailer');
 
@@ -10,7 +13,7 @@ let transporter = nodemailer.createTransport({
   auth: {
     type: "login",
     user: "snowcoreg10@outlook.com", 
-    pass: "37BDCB1F2FD032F7DA217078FE40DCD6FB9B",
+    pass: EMAIL_SERVICE_PASS,
   },
 });
 
@@ -28,8 +31,8 @@ exports.signUpEmail = function(email){
             from: "snowcoreg10@outlook.com", // sender address
             to: email,
             subject: "Thanks for signing up!", // Subject line
-            text: "Thank you for opting in for emails. Enjoy your daily weather reports.", // plain text body
-            html: "Thank you for opting in for emails. Enjoy your daily weather reports." // html body
+            text: "Thank you for signing up. Opt in to emails to receive daily weather reports.", // plain text body
+            html: "Thank you for signing up. Opt in to emails to receive daily weather reports." // html body
         })
     } catch(error){
         res.status(error.response.status)

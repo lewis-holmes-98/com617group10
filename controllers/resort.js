@@ -2,6 +2,9 @@ const Resorts = require("../models/Resort");
 const Historics = require("../models/Historic");
 const Users = require("../models/User");
 const axios = require("axios");
+require("dotenv").config();
+
+const { OWM_API_KEY } = process.env;
 
 exports.list = async (req, res) => {
     try {
@@ -29,7 +32,7 @@ exports.details = async (req, res) => {
         const emptyDate = new Date(2023,0);
         const bestDate = new Date(emptyDate.setDate(weekStartDay)).toLocaleDateString()
 
-        link = "https://api.openweathermap.org/data/2.5/weather?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&appid=2afd68316886e4f486a125facf22718d"
+        link = "https://api.openweathermap.org/data/2.5/weather?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&appid="+OWM_API_KEY
         const response = await axios.get(link).then(res => res.data)
         .catch(function (error) {
             console.log(error);
@@ -40,8 +43,8 @@ exports.details = async (req, res) => {
         var twoWeek = currentTime - (2*604800);
         var oneWeek = currentTime - (1*604800);
 
-        link = "http://history.openweathermap.org/data/2.5/history/city?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&type=hour&start="+twoWeek+"&end="+oneWeek+"&appid=2afd68316886e4f486a125facf22718d"
-        link2 = "http://history.openweathermap.org/data/2.5/history/city?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&type=hour&start="+oneWeek+"&end="+currentTime+"&appid=2afd68316886e4f486a125facf22718d"
+        link = "http://history.openweathermap.org/data/2.5/history/city?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&type=hour&start="+twoWeek+"&end="+oneWeek+"&appid="+OWM_API_KEY
+        link2 = "http://history.openweathermap.org/data/2.5/history/city?lat="+resortDetails.lat+"&lon="+resortDetails.long+"&type=hour&start="+oneWeek+"&end="+currentTime+"&appid="+OWM_API_KEY
         const response2 = await axios.get(link).then(res => res.data)
         .catch(function (error) {
             console.log(error);

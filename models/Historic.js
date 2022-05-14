@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 const historicSchema = new Schema(
     {
         dayofyear: {type:Number},
-        //name: {type:String},
         hourlytime_mean: {type: Number},
         avgtempC_mean: {type: Number},
         totalSnow_cm_mean: {type: Number},

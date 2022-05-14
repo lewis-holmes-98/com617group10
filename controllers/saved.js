@@ -16,8 +16,6 @@ exports.list = async (req, res) => {
 
 exports.unsave = async (req, res) => {
   try {
-
-    console.log("vs")
       const resortId = req.params.id;
       const userId = req.session.userID;
 

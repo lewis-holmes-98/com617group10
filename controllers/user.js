@@ -83,7 +83,6 @@ exports.save = async (req, res) => {
         const resortId = req.params.id;
         const userId = req.session.userID;
         const resortName = await Resorts.findOne({_id: resortId})
-        console.log(resortName.name)
         await User.updateOne({ _id: userId}, {$addToSet:{saved: resortId}});
         res.redirect(`/resort/`+resortName.name);
     } catch (e) {
@@ -120,7 +119,6 @@ exports.unsave = async (req, res) => {
 exports.edit = async (req, res) => {
     try {
         const userId = req.params.id;
-        console.log(userId)
         const userToUpdate = await User.findOne({_id: userId });
         res.render("editUser", {userToChange: userToUpdate});
     } catch (e) {
@@ -275,7 +273,6 @@ exports.weatherReport = async (req, res) => {
             for(resort in savedResorts){
                 const savedResortId = savedResorts[savedCount]._id
                 if(didItSnow.includes(savedResortId.toString())){
-                    console.log("diditsnowincludes")
                     sendEmail = true
                     break;
                 }

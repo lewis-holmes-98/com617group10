@@ -30,7 +30,6 @@ exports.adminControls = async (req, res) => {
             {$addFields:{name:"$resortName.formattedName"}}   
         ])
 
-        //console.log(resortSaves)
 
         res.render("adminPage", { 
             resorts: resorts, 

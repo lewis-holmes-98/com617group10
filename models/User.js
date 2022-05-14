@@ -9,7 +9,6 @@ const userSchema = new Schema(
         name: { type: String, required: [true, 'Please provide your name.']},
         email: { type: String, required: [true, 'Please provide an email address.'], index: { unique: true } },
         emailOptIn: {type: Boolean},
-        //profilePic: {type: Buffer},
         level: {type: Number},
         password: { type: String, required: [true, 'Please create a password.'], 
                                     minLength: [4, "Password too short."],

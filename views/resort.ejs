@@ -91,9 +91,10 @@
                             <% savedResort=true;%>
                 <%}}}%>
 
-
-                <% if(!savedResort && user) { %><a href="/user/save/<%=resortDetails.id%>" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Save</a><% } %>
-                <% if(savedResort && user) { %><a href="/user/unsave/<%=resortDetails.id%>" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Unsave</a> <% } %>
+                <% if(user){ %> 
+                <% if(!savedResort) { %><a href="/user/save/<%=resortDetails.id%>" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Save</a><% } %>
+                <% if(savedResort) { %><a href="/user/unsave/<%=resortDetails.id%>" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Unsave</a> <% } %>
+                <% } %>
             </div>
     </main>
 

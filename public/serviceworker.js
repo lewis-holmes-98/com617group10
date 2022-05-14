@@ -15,7 +15,7 @@ self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(cacheName);
     console.log('[Service Worker] Caching all: app shell and content');
-    await(addResourcesToCache(appShellFiles))
+    //await(addResourcesToCache(appShellFiles))
   })());
 });
 
@@ -28,7 +28,23 @@ self.addEventListener('fetch', (e) => {
     const response = await fetch(e.request);
     const cache = await caches.open(cacheName);
     console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-    cache.put(e.request, response.clone());
+    //cache.put(e.request, response.clone());
     return response;
   })());
 });
+
+window.addEventListener('activate', function (event) {
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      return Promise.all(
+        cacheNames
+          .filter(function (cacheName) {
+            return true
+          })
+          .map(function (cacheName) {
+            return caches.delete(cacheName)
+          }),
+      )
+    }),
+  )
+})

@@ -1,28 +1,13 @@
 # com617group10
-## Seeder
-Seeds using data from the /data folder.
+In this project, the team is tasked with creating an application for a high-end travel agent specialising in winter sports. The target audience is the 35-60 age bracket. The application aims to increase inbound website traffic by building a Progressive Web Application, allowing users to see historical snowfall and receive alerts for new snowfall for a selected resort.
 
-Predictions made using the score column in the data.
-
-<img src="/img/example_prediction.png" width="300"> 
-<img src="/img/example_prediction2.png" width="300"> 
-
-# Setup
+## Setup
 1. `npm install`
+2. If database is not yet seeded: `npm run seed` (use `npm run seedProduction` for production database).
+3. Remove leading empty space from hashed passwords in database. This ensures that only the database owner can access the SuperAdmin account after seeding.
+4. `npm run dev`
 
-2. `npm run seed` (use `npm run seedProduction` for production database)
-3. Remove empty space from hashed passwords in database.
+## Seeding the database
+Database is seeded with `seeder.js` using data from the [data](/data) folder.
 
-
-# Using mongodb to store images
->The standard here is to use a tool like S3 or Azure Object Store to store all of the binary data. You eventually want to serve this stuff off a CDN somewhere, not from the DB.
-
-TODO: Find max snow, estimate position in list
-TODO: include recalc of rolling average for score
-
-TODO: Calc best 6 week window every day
-TODO: update score every day
-
-2. `npm run dev`
-3. `npm run seed` (use `npm run seedProduction` for production database). **please do not run this**
 

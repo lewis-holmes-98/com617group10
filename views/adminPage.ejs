@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,74 +8,96 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Admin Page</title>
 </head>
+
 <body>
     <%- include('common/header'); -%>
 
-    <main class="container mx-auto mt-8 px-4 pt-6 bg-gray-50">
+        <main class="container mx-auto mt-8 px-4 pt-6 object-fill max-w-screen-md bg-gray-50">
+            <div class="pb-2 text-center">
+                <p class="blog-header-logo text-dark underline">User Info</p>
+            </div>
 
-        <div class="pb-2">
-            <p class="blog-header-logo text-dark underline">User Info</p>
-        </div>
+            <div class="">
+                
+                <div class="py-1 text-center">
+                    <p>Number of users:<%= numUsers %></p>
+                </div>
 
-        <div class="py-1">
-            <p>Number of users:<%= numUsers %></p>
-        </div>
-        
-        <div class="py-1">
-            <p>Number of admins:<%= numAdmins %></p>
-        </div>
+                <div class="py-1 text-center">
+                    <p>Number of admins:<%= numAdmins %></p>
+                </div>
 
-        <div class="py-1"></div>
-            <a href="/emailUsers" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Email Users</a>
-        </div>
+                <div class="py-1 text-center">
+                    <a href="/emailUsers"
+                        class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Email
+                        Users</a>
+                </div>
+            
 
-        <div class="py-1"></div>
-            <p>Saves per resort:</p>
-        </div>
-        
-        <div class="py-2">
-            <table class="table-auto border-collapse border border-slate-500">
-                <thead>
-                    <tr>
-                        <th class="px-2 border border-slate-600">Name</th>
-                        <th class="px-2 border border-slate-600">Number of saves</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% resortSaves.forEach(resort => { %>
-                        <tr>
-                            <td class="px-2 text-center border border-slate-600"><%= resort.name %></td>
-                            <td class="px-2 text-center border border-slate-600"><%= resort.count %></td>
-                        </tr>
-                    <%})%>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="py-2">
-            <table class="table-auto border-collapse border border-slate-500">
-                <thead>
-                    <tr>
-                        <th class="px-1 text-center border border-slate-600">Username</th>
-                        <th class="px-1 text-center border border-slate-600">Name</th>
-                        <th class="px-1 text-center border border-slate-600">Email</th>
-                        <th class="px-1 text-center border border-slate-600">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% users.forEach(account => { %>
-                        <tr>
-                            <td class="px-1 text-center border border-slate-600"><%= account.username %></td>
-                            <td class="px-1 text-center border border-slate-600"><%= account.name %></td>
-                            <td class="px-1 text-center border border-slate-600"><%= account.email %></td>
-                            <td class="px-1 text-center border border-slate-600">
-                                <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>"class="py-1 px-3 text-slate font-semibold hover:bg-slate-300 border-slate-500 transition duration-300">Edit User</a><% } %>  
-                            </td>
-                        </tr>
-                    <%})%>
-                </tbody>
-            </table>
-        </div>
-    </main>
+                <div class="py-1 text-center">
+                    <p>Saves per resort:</p>
+                </div>
+
+                <div class="py-2 pl-48">
+                    <table class="table-auto border-collapse border border-slate-500">
+                        <thead>
+                            <tr>
+                                <th class="px-2 border border-slate-600">Name</th>
+                                <th class="px-2 border border-slate-600">Number of saves</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% resortSaves.forEach(resort=> { %>
+                                <tr>
+                                    <td class="px-2 text-center border border-slate-600">
+                                        <%= resort.name %>
+                                    </td>
+                                    <td class="px-2 text-center border border-slate-600">
+                                        <%= resort.count %>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="py-2 pl-28">
+                    <table class="table-auto border-collapse border border-slate-500">
+                        <thead>
+                            <tr>
+                                <th class="px-1 text-center border border-slate-600">Username</th>
+                                <th class="px-1 text-center border border-slate-600">Name</th>
+                                <th class="px-1 text-center border border-slate-600">Email</th>
+                                <th class="px-1 text-center border border-slate-600">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(account=> { %>
+                                <tr>
+                                    <td class="px-1 text-center border border-slate-600">
+                                        <%= account.username %>
+                                    </td>
+                                    <td class="px-1 text-center border border-slate-600">
+                                        <%= account.name %>
+                                    </td>
+                                    <td class="px-1 text-center border border-slate-600">
+                                        <%= account.email %>
+                                    </td>
+                                    <td class="px-1 text-center border border-slate-600">
+                                        <% if(account.level<user.level) { %>
+                                            <a href="/users/editUser/<%= account.id %>"
+                                                class="py-1 px-3 text-slate font-semibold hover:bg-slate-300 border-slate-500 transition duration-300">Edit
+                                                User
+                                            </a>
+                                            <% } %>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
 </body>
+
 </html>

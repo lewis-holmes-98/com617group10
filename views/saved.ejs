@@ -13,14 +13,14 @@
 <body>
     <%- include('common/header'); -%>
 
-    <main class="container flex mt-8 pb-4 object-fill">
-        <div class="container mt-8 pb-4 object-fill max-w-xs max-h-max bg-gray-50">
+    <main class="container mx-auto mt-8 px-4 pt-6 object-fill max-w-md bg-gray-50">
+        <div class="d-flex justify-content-center align-items-center">
 
-            <div class=" py-4 px-4">
+            <div class="py-4 text-center">
                 <p class="blog-header-logo text-2xl">Saved Resorts</p>
             </div>
 
-        <div class="py-2 px-2 max-w-sm">
+        <div class="py-2 max-w-sm text-center">
             <% const saveMenu = true %>
             <% const savedResorts = resorts  %>
             <% savedResorts.forEach(resort => { %>

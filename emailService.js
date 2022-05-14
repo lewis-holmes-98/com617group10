@@ -1,5 +1,5 @@
-const { ToadScheduler, SimpleIntervalJob, Task, AsyncTask } = require('toad-scheduler')
-const scheduler = new ToadScheduler()
+//const { ToadScheduler, SimpleIntervalJob, Task, AsyncTask } = require('toad-scheduler')
+//const scheduler = new ToadScheduler()
 require("dotenv").config();
 
 const { EMAIL_SERVICE_PASS } = process.env;

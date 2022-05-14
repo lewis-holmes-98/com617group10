@@ -7,21 +7,19 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const User = require("./models/User");
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, '/views'));
 
 const { PORT, MONGODB_URI } = process.env;
 
 /* Controllers */
 const resortsController = require("./controllers/resort");
 const usersController = require("./controllers/user");
-const savedApiController = require("./controllers/api/saved");
 const savedController = require("./controllers/saved");
 const adminController = require("./controllers/admin");
 
 /* Database */
 mongoose.connect(MONGODB_URI, { 
     useNewUrlParser: true,
-    // useCreateIndex: true, 
-    // autoIndex: true, 
    }).then(() => {
     console.log('Connected to database.');
   });
@@ -72,7 +70,6 @@ app.get("/", resortsController.list);
 
 
 app.get("/resort/:id",resortsController.details, (req, res) => {
-  console.log("H1")
     res.render('resort', { errors: {} })
 });
 
@@ -97,10 +94,10 @@ app.get("/logout", async (req, res) => {
 })
 
 app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {
-  console.log("H")
   res.render('editUser', { errors: {} })
 });
-//app.get("/users/userDelete/:id", usersController.userDelete);
+
+app.get("/users/userDelete/:id", authEdit, usersController.userDelete);
 app.get("/users/adminDelete/:id",authMiddleware, usersController.adminDelete);
 app.get("/users/makeAdmin/:id",authMiddleware, usersController.makeAdmin);
 app.post("/users/update/:id",authMiddleware, usersController.update);
@@ -109,13 +106,18 @@ app.post("/users/update/:id",authMiddleware, usersController.update);
 app.get("/adminPage",authMiddleware, adminController.adminControls);
 
 /* Saved */
-app.post("/api/saved", savedApiController.create);
-
 app.get("/saved", authMiddleware, savedController.list, (req, res) => {
   res.render("saved", { errors: {} });
 });
 
 app.get("/user/unsave/:id",usersController.unsave);
+app.get("/user/save/:id",usersController.save);
+
+app.get("/saved/unsave/:id",savedController.unsave);
+
+
+/*Email Users*/
+app.get("/emailUsers",usersController.weatherReport);
 
 
 /* Local app */

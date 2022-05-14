@@ -1,5 +1,6 @@
 const Resorts = require("../models/Resort");
 const Historics = require("../models/Historic");
+const Users = require("../models/User");
 const axios = require("axios");
 
 exports.list = async (req, res) => {
@@ -17,6 +18,11 @@ exports.details = async (req, res) => {
     try {
         const resortDetails = await Resorts.findOne({name: id});
         const resortId = resortDetails._id;
+
+        const usersSaved = await Users.aggregate([
+            {$unwind: "$saved"},
+            {"$match": {"saved": resortId}}
+        ])
 
         const weekStart = await Historics.find({resort_id: resortId}).sort({forwardscore: -1}).limit(1).select("dayofyear -_id");
         const weekStartDay = await weekStart[0].dayofyear
@@ -46,7 +52,14 @@ exports.details = async (req, res) => {
             console.log(error);
         });
         oneWeekweatherData = response3
-        res.render("resort", { resortDetails: resortDetails, weatherData: weatherData, twoWeekData: twoWeekweatherData, oneWeekData: oneWeekweatherData,bestDate:bestDate});       
+        res.render("resort", { 
+            resortDetails: resortDetails, 
+            weatherData: weatherData, 
+            twoWeekData: twoWeekweatherData, 
+            oneWeekData: oneWeekweatherData,
+            bestDate: bestDate,
+            usersSaved: usersSaved
+        });       
      } catch (e) {
          res.status(404).send({message: JSON.stringify(e)})
      }

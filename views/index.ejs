@@ -1,20 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Import the manifest to represent the web application, required for PWA. -->
-    <link rel="manifest" crossorigin="use-credentials" href="../manifest.json" /> 
-    <title>Home</title>
-    <script>navigator.serviceWorker.register("/serviceworker.js")</script>
+    <title>Resorts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+        
 </head>
+
 <body>
-    <%- include('common/header'); -%>
-    
-    <% resorts.forEach(resort => { %>
-        <a href="resort/<%= resort.name %>" class="link"><%= resort.formattedName %></a>
-    </br>
-        <%})%>
+
+    <div class="">
+        <%- include('common/header'); -%>
+    </div>
+
+    <main class="container flex mt-8 pb-4 object-fill">
+        <div class="container mt-8 pb-4 object-fill max-w-xs max-h-max bg-gray-50">
+            <div class=" py-4 px-4">
+                <p class="blog-header-logo text-2xl">Resorts</p>
+            </div>
+            <div class="py-4 px-2 max-w-sm">
+                <% resorts.forEach(resort=> { %>
+                <div class="py-4 px-2 text-gray-700 font-semibold hover:bg-slate-100 transition duration-300">
+                    <a href="resort/<%= resort.name %>"
+                        class="button py-3 px-3 text-gray-700 font-semibold hover:bg-slate-100 border-slate-500 transition duration-300">
+                        <%= resort.formattedName %>
+                    </a>
+                </div>
+                <%})%>
+            </div>
+        </div>
+
+        <!-- Map integration -->
+
+        <div id="map" class="grow mx-5">
+            <script>
+                let map = L.map('map').setView([45.3, 6.55], 10)
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    maxZoom: 18,
+                    id: 'mapbox/streets-v11',
+                    tileSize: 512,
+                    zoomOffset: -1,
+                    accessToken: 'pk.eyJ1IjoiNGhvbG1sMDkiLCJhIjoiY2wzMXJyaWw3MDdlYzNpbXd6d2s2cmc2eiJ9.CklxqpamSEI2B8-eIIzGqA'
+                }).addTo(map);
+
+                let popup = L.popup();
+
+                let BLB = L.marker([45.45228, 6.566388]).addTo(map);
+                BLB.bindPopup("Brides-Les-Bains").openPopup();
+
+                let OREL = L.marker([45.207662, 6.54539]).addTo(map);
+                OREL.bindPopup("Orelle").openPopup();
+                
+                let COUR = L.marker([45.430893, 6.620386]).addTo(map);
+                COUR.bindPopup("Courchevel").openPopup();
+
+                let LESM = L.marker([45.324114, 6.53745]).addTo(map);
+                LESM.bindPopup("Les Menuires").openPopup();
+
+                let SMDB = L.marker([45.379172, 6.50551]).addTo(map);
+                SMDB.bindPopup("Saint-Martin-de-Belleville").openPopup();
+        
+                let MERI = L.marker([45.398883, 6.565651]).addTo(map);
+                MERI.bindPopup("Méribel").openPopup();
+
+                let VALT = L.marker([45.298721, 6.580011]).addTo(map);
+                VALT.bindPopup("Val Thorens").openPopup();
+            </script>
+        </div>
+    </main>
 </body>
+
 </html>

@@ -1,6 +1,10 @@
 const Resorts = require("../models/Resort");
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const emailService = require('../emailService.js');
+const { off } = require("../models/Resort");
+const axios = require("axios");
+
 
 exports.login = async (req, res) => {
     try {
@@ -30,13 +34,15 @@ exports.login = async (req, res) => {
 exports.create = async (req, res) => {
     try {
 
+        if (req.body.emailYes) emailOpt = true
+        else emailOpt = false
         const user = new User({ 
             username: req.body.username,
             name: req.body.name, 
             email: req.body.email, 
             password: req.body.password,
             level:1,
-            emailOptIn: true // TODO: fix this to receive the checkbox
+            emailOptIn: emailOpt
             });
 
         const userWithProposedEmail = await User.findOne({ email: req.body.email })
@@ -52,6 +58,12 @@ exports.create = async (req, res) => {
             return;
         }
         await user.save();
+
+        try{
+            emailService.signUpEmail(req.body.email);
+        }catch(e){
+            console.log(e)
+        }
         res.redirect('/?message=user saved')
     } catch (e) {
         if (e.errors) {
@@ -65,23 +77,45 @@ exports.create = async (req, res) => {
     }
 };
 
-exports.unsave = async (req, res) => {
+
+exports.save = async (req, res) => {
     try {
         const resortId = req.params.id;
         const userId = req.session.userID;
-        await User.updateOne(
-        { _id:userId}, {
-            $pull: {
-            saved: resortId
-            }
-        });
-        res.redirect("/saved");
+        const resortName = await Resorts.findOne({_id: resortId})
+        console.log(resortName.name)
+        await User.updateOne({ _id: userId}, {$addToSet:{saved: resortId}});
+        res.redirect(`/resort/`+resortName.name);
     } catch (e) {
         res.status(404).send({
         message: `Cannot leave -  error ${id}.`,
         });
     }
 };
+
+
+exports.unsave = async (req, res) => {
+    try {
+        const resortId = req.params.id;
+        const userId = req.session.userID;
+        const resortName = await Resorts.findOne({_id: resortId})
+
+        await User.updateOne(
+        { _id:userId}, {
+            $pull: {
+            saved: resortId
+            }
+        });
+        
+        res.redirect(`/resort/`+resortName.name);
+        
+    } catch (e) {
+        res.status(404).send({
+        message: `Cannot leave -  error ${id}.`,
+        });
+    }
+};
+
 
 exports.edit = async (req, res) => {
     try {
@@ -93,6 +127,7 @@ exports.edit = async (req, res) => {
         res.status(404).send({message: JSON.stringify(e)});
     }
 };
+
 
 exports.adminDelete = async (req, res) => {
     const id = req.params.id;
@@ -106,20 +141,36 @@ exports.adminDelete = async (req, res) => {
     }
   };
 
-  exports.makeAdmin= async (req, res) => {
+
+  exports.userDelete = async (req, res) => {
     const id = req.params.id;
     try {
-        await User.findOneAndUpdate({ _id: id }, { 
-            isAdmin: true
-          });
-          res.redirect("/adminPage");
+      await User.findByIdAndRemove(id);
+      console.log("User deleted: " + req.params.id)
+      res.redirect("/");
     } catch (e) {
       res.status(404).send({
         message: `unable to delete user ${id}.`,
       });
     }
   };
-  
+
+
+exports.makeAdmin= async (req, res) => {
+const id = req.params.id;
+try {
+    await User.findOneAndUpdate({ _id: id }, { 
+        isAdmin: true
+        });
+        res.redirect("/adminPage");
+} catch (e) {
+    res.status(404).send({
+    message: `unable to delete user ${id}.`,
+    });
+}
+};
+
+
 exports.update = async (req, res) => {
     try {
         const userToUpdateId = req.params.id;
@@ -156,6 +207,15 @@ exports.update = async (req, res) => {
                 email: newEmail
             }
         });
+
+        if(req.body.level) {
+        await User.updateOne({_id: userToUpdateId},
+            {$set: {
+                level: req.body.level
+            }
+        })
+        };
+
         const updatedUser = await User.findOne({_id: userToUpdateId });
         res.render('editUser', { 
             errors: {} , 
@@ -165,3 +225,74 @@ exports.update = async (req, res) => {
 
     }
 };
+
+exports.weatherReport = async (req, res) => {
+
+    mailingUsers = await User.find({emailOptIn:true});
+
+    const resorts = await Resorts.find({});
+
+    count = 0
+    var didItSnow = []
+
+    for(resort in resorts){
+
+        const currentResort = resorts[count]
+
+        var currentTime= Math.round((new Date()).getTime() / 1000);
+        var oneWeek = currentTime - (1*604800);
+
+        link = "http://history.openweathermap.org/data/2.5/history/city?lat="+currentResort.lat+"&lon="+currentResort.long+"&type=hour&start="+oneWeek+"&end="+currentTime+"&appid=2afd68316886e4f486a125facf22718d"
+        
+        const response = await axios.get(link).then(res => res.data)
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        const resortWeatherData = response
+
+        weatherDescription = resortWeatherData.list[resortWeatherData.cnt-1].weather[0].description
+
+        if(weatherDescription.toLowerCase().includes("snow")){
+            didItSnow.push((currentResort._id).toString())
+        }
+
+        count ++
+    }
+
+    count = 0
+    for(user in mailingUsers){
+
+        const user = mailingUsers[count]
+        const savedResorts = await Resorts.find({
+        _id: {$in: user.saved}});
+
+
+        if(savedResorts){
+
+            savedCount = 0
+            sendEmail = false
+            for(resort in savedResorts){
+                const savedResortId = savedResorts[savedCount]._id
+                if(didItSnow.includes(savedResortId.toString())){
+                    console.log("diditsnowincludes")
+                    sendEmail = true
+                    break;
+                }
+                
+                savedCount ++
+            }
+
+            if(sendEmail){
+                emailService.weatherReport(user.email)
+            }
+        } 
+
+        count ++
+    }
+
+    res.redirect("/adminPage");
+
+
+
+}

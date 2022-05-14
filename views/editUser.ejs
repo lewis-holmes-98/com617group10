@@ -1,91 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>My account</title>
 </head>
+
 <body>
     <%- include('common/header'); -%>
-    <p><%= userToChange.id %></p>
-    <form method="POST" action="/users/update/<%= userToChange.id %>">
-        <div class="form-group">
-            <label for="username">username</label>
-            <input
-            type="username"
-            class="form-control"
-            id="username"
-            name="username"
-            value="<%= userToChange.username %>"
-            placeholder="Username..."/>
-            <% if (typeof errors !=  'undefined') {%>
-                <% if (errors['username']) { %>
-                    <p style="color: red"><%= errors['username'].message %></p>
-            <% } }%>
-        </div>
 
-        <div class="form-group">
-            <label for="name">name</label>
-            <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            value="<%= userToChange.name %>"
-            placeholder="Username..."/>
-        </div>
-        <div class="form-group">
-            <label for="email">email</label>
-            <input
-            type="text"
-            class="form-control"
-            id="email"
-            name="email"
-            value="<%= userToChange.email %>"
-            placeholder="Email..."/>
-            <% if (typeof errors !=  'undefined') {%>
-                <% if (errors['email']) { %>
-                    <p style="color: red"><%= errors['email'].message %></p>
-            <% } }%>
-        </div>
+        <main class="container mx-auto mt-8 px-4 py-2 object-fill max-w-md bg-gray-50">
 
-        <div>
-            <input hidden
-            type="text"
-            id="id"
-            name="id"
-            value="<%= userToChange.id %>"/>
-        </div>
-        <div>
-            <% if(user.level == 3 && userToChange.level !=3) { %>
-                <label for="level">Role</label>
-                <select name="level" id="level">
-                    <option value="1">User</option>
-                    <option value="2">Admin</option>
-                </select> 
-            <% } %>
-        </div>
-        <button type="submit">Update details</button>
-    </form>
-    <% if(user.level !=1) { %>
-    <a href="/users/adminDelete/<%= userToChange.id %>">Delete</a><% } %>
-    <% if(user.level ==1) { %>
-        <a href="/users/userDelete/<%= user.id %>">Delete</a><% } %>
+            <div class="d-flex justify-content-center align-items-center py-2">
+                <form method="POST" action="/users/update/<%= userToChange.id %>">
+                    <div class="form-group">
+                        <label for="username"
+                            class="text-center block mb-2 text-sm font-medium text-gray-400">
+                            Current Username: <%= userToChange.username %></label>
+                        <input type="username"
+                            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            id="username" name="username" value="" placeholder="Enter a new Username..." />
+                        <% if (typeof errors !='undefined' ) {%>
+                            <% if (errors['username']) { %>
+                                <p style="color: red">
+                                    <%= errors['username'].message %>
+                                </p>
+                                <% } }%>
 
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center py-2">
+                        <div class="form-group">
+                            <label for="name"
+                                class="text-center block mb-2 text-sm font-medium text-gray-400">
+                                Current Name: <%= userToChange.name %></label>
+                            <input type="text"
+                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                id="name" name="name" value="" placeholder="Enter Name..." />
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center py-2">
+                        <div class="form-group">
+                            <label for="email"
+                                class="text-center block mb-2 text-sm font-medium text-gray-400">
+                                Current Email: <%= userToChange.email %></label>
+                            <input type="text"
+                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                id="email" name="email" value="" placeholder="Enter Email..." />
+                            <% if (typeof errors !='undefined' ) {%>
+                                <% if (errors['email']) { %>
+                                    <p style="color: red">
+                                        <%= errors['email'].message %>
+                                    </p>
+                                    <% } }%>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input hidden type="text" id="id" name="id" value="<%= userToChange.id %>" />
+                    </div>
+                    <div class="flex justify-between py-4">
+                        <% if(user.level==3 && userToChange.level !=3) { %>
+                            <label for="level">Role</label>
+                            <select name="level" id="level">
+                                <option value="1">User</option>
+                                <option value="2">Admin</option>
+                            </select>
+                            <% } %>
+                        
+                            <button type="submit" class=" w-1/3 button py-3 px-2 text-white font-semibold bg-slate-500 hover:bg-slate-300 transition duration-300">Update details</button>
+                        
+                            <% if(user.level !=1) { %>
+                                <a href="/users/adminDelete/<%= userToChange.id %>" class="button text-center w-1/3 py-3 px-2 text-white font-semibold bg-slate-500 hover:bg-slate-300 transition duration-300">Delete</a>
+                                <% } %>
+                                    <% if(user.level==1) { %>
+                                        <a href="/users/userDelete/<%= user.id %>" class="button text-center w-1/3 py-3 px-2 text-white font-semibold bg-slate-500 hover:bg-slate-300 transition duration-300">Delete</a>
+                                        <% } %>
+                    </div>    
+                </form>                                   
+        </main>
 </body>
+
 </html>
 
 <script>
     function setSelectedType(elementToChange, valueToSet) {
-      for ( var i = 0; i < elementToChange.options.length; i++ ) {
-          if (valueToSet == 1) valueToSet = "User"
-          if (valueToSet == 2) valueToSet = "Admin"
-        if ( elementToChange.options[i].text == valueToSet ) {
-            elementToChange.options[i].selected = true;
-            return;
+        for (var i = 0; i < elementToChange.options.length; i++) {
+            if (valueToSet == 1) valueToSet = "User"
+            if (valueToSet == 2) valueToSet = "Admin"
+            if (elementToChange.options[i].text == valueToSet) {
+                elementToChange.options[i].selected = true;
+                return;
+            }
         }
-      }
     }
-    setSelectedType(document.getElementById("level"),"<%=userToChange.level%>");
-  </script>
+    setSelectedType(document.getElementById("level"), "<%=userToChange.level%>");
+</script>

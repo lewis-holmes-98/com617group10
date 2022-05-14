@@ -1,53 +1,124 @@
 <!DOCTYPE html>
 <html>
-<style>
-ul {
-  list-style-type: none;
-  margin-bottom: 2px;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li{
-  float: left;
-}
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-li:not(.active):hover {
-  background-color: #111;
-}
-.active {
-  background-color: #04AA6D;
-}
-</style>
+
 <body>
   <header>
-    <ul class = "navbar">
-     <li><a href="/"> Resorts </a></li> 
-      <% if(user) { %>
-      <li><a href="/logout"> <%= user.username %> (Logout)</a></li>
-      <li><a href="/saved"> Saved</a></li>
-      <li><a href="/users/editUser/<%= user.id %>"> Account Settings</a></li>
-      <% if(!(user.level == 1)) { %><li><a href="/adminPage"> Admin Controls</a></li><% } %>
-      <%
-      }%> <% if(!user) { %>
-      <li><a href="/login"> Login </a></li>
-      <li><a class="nav-link" href="/signup"> Register </a></li>
-      <% } %>
-    </ul>
+
+    <div>
+      <nav class="bg-slate-500 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="flex justify-between">
+            <div class="flex space-x-8">
+              <div>
+                <a href="/" class="flex py-3 px-2">
+                  <span class="font-semibold text-white text-lg">Snowcore</span>
+                </a>
+              </div>
+              <div class="hidden md:flex items-center space-x-1">
+                <a href="/"
+                  class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                  Home</a>
+                <a href="/"
+                  class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                  Resorts</a>
+                <!-- <a href="/contact"
+                  class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                  Contact Us</a> -->
+              </div>
+            </div>
+
+            <div class="navbar">
+              <div class="hidden md:flex items-center space-x-3">
+
+                <% if(user) { %>
+                  <a href="/saved"
+                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    Saved</a>
+
+                  <a href="/logout"
+                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    <%= user.username %> (Logout)
+                  </a>
+
+                  <a href="/users/editUser/<%= user.id %>"
+                    class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                    Account Settings</a>
+                <% }%>
+
+                <% if(!user) { %>
+                      <a href="/login"
+                        class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                        Login </a>
+
+                      <a class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300"
+                        href="/signup"> Register </a>
+                <% } %>
+  
+                <% if((user && user.level!==1)) { %>
+                          <a href="/adminPage"
+                            class="py-4 px-2 text-white border-b-4 font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">
+                            Admin Controls</a>
+                <% } %>
+                            
+              </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+              <button class="outline-none mobile-menu-button">
+                <svg class=" w-6 h-6 text-white bg-slate-500 " x-show="!showMenu" fill="none" strokeLinecap="round"
+                  strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden mobile-menu">
+          <ul class="">
+            <li>
+              <a href="/"
+                class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                Home</a>
+            </li>
+            <li>
+              <a href=""
+                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
+                Map</a>
+            </li>
+            <li>
+              <a href=""
+                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
+                Weather</a>
+            </li>
+            <li>
+              <a href=""
+                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
+                Contact Us</a>
+            </li>
+            <li>
+              <a href="/Login"
+                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
+                Log In</a>
+            </li>
+            <li>
+              <a href="/Signup"
+                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
+                Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
   </header>
 
 </body>
+
 </html>
 
-<script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
   $(document).ready(function () {

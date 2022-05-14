@@ -12,16 +12,25 @@
 
     <main class="container mx-auto mt-8 px-4 pt-6 bg-gray-50">
 
-        <div class="text-center pb-4">
-            <p class="blog-header-logo text-dark">User Info</p>
+        <div class="pb-2">
+            <p class="blog-header-logo text-dark underline">User Info</p>
         </div>
 
-        <p>Number of users:<%= numUsers %></p>
-        <p>Number of admins:<%= numAdmins %></p>
+        <div class="py-1">
+            <p>Number of users:<%= numUsers %></p>
+        </div>
+        
+        <div class="py-1">
+            <p>Number of admins:<%= numAdmins %></p>
+        </div>
 
-        <a href="/emailUsers" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Email Users</a>
+        <div class="py-1"></div>
+            <a href="/emailUsers" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Email Users</a>
+        </div>
 
-        <p>Saves per resort:</p>
+        <div class="py-1"></div>
+            <p>Saves per resort:</p>
+        </div>
         
         <div class="py-2">
             <table class="table-auto border-collapse border border-slate-500">

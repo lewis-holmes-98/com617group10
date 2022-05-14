@@ -253,7 +253,7 @@ exports.weatherReport = async (req, res) => {
 
         weatherDescription = resortWeatherData.list[resortWeatherData.cnt-1].weather[0].description
 
-        if(true){//weatherDescription.toLowerCase().includes("snow")
+        if(weatherDescription.toLowerCase().includes("snow")){
             didItSnow.push((currentResort._id).toString())
         }
 

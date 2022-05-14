@@ -14,14 +14,6 @@
 
         <main class="container mx-auto mt-8 px-4 py-2 object-fill max-w-md bg-gray-50">
 
-
-            <div class="text-center pb-2">
-                <p class="blog-header-logo text-dark">User ID:</p>
-                <p>
-                    <%= userToChange.id %>
-                </p>
-            </div>
-
             <div class="d-flex justify-content-center align-items-center py-2">
                 <form method="POST" action="/users/update/<%= userToChange.id %>">
                     <div class="form-group">

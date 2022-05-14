@@ -19,9 +19,8 @@
         <p>Number of users:<%= numUsers %></p>
         <p>Number of admins:<%= numAdmins %></p>
 
-        <a href="/emailUsers">Email Users about resorts</a>
+        <a href="/emailUsers" class="button py-1 px-3 text-white font-semibold bg-slate-500 hover:bg-slate-300 border-slate-500 transition duration-300">Email Users</a>
 
-        
         <p>Saves per resort:</p>
         
         <div class="py-2">
@@ -60,7 +59,7 @@
                             <td class="px-1 text-center border border-slate-600"><%= account.name %></td>
                             <td class="px-1 text-center border border-slate-600"><%= account.email %></td>
                             <td class="px-1 text-center border border-slate-600">
-                                <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>">Edit User</a><% } %>  
+                                <% if(account.level<user.level) { %><a href="/users/editUser/<%= account.id %>"class="py-1 px-3 text-slate font-semibold hover:bg-slate-300 border-slate-500 transition duration-300">Edit User</a><% } %>  
                             </td>
                         </tr>
                     <%})%>

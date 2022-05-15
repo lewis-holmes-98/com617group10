@@ -19,3 +19,8 @@ Database is seeded with `seeder.js` using data from the [data](/data) folder.
 ### PWA
 To make the application installable first ensure that the application can be run locally, then comment lines 36-50 out in [serviceworker.js](/public/serviceworker.js).
 
+### Login Details
+
+Default Admin Username: Default-Admin1
+Default Admin Password: set_in_seeder
+

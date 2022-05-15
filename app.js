@@ -109,3 +109,10 @@ app.get("/saved", authMiddleware, savedController.list, (req, res) => {
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
   });
+
+
+nodeCron = require("node-cron")
+const emailService = require("./emailService.js");
+const job = nodeCron.schedule("00 00 18 * * *", () => {
+    emailService.weatherReport()
+  });

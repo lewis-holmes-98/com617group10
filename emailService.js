@@ -1,4 +1,4 @@
-const { EMAIL_SERVICE_PASS } = process.env;
+const {EMAIL_ADDRESS, EMAIL_SERVICE_PASS } = process.env;
 const nodemailer = require('nodemailer');
 
 //Connect to smtp server and set up transport.
@@ -8,7 +8,7 @@ let transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     type: "login",
-    user: "snowcoreg10@outlook.com", 
+    user: EMAIL_ADDRESS, 
     pass: EMAIL_SERVICE_PASS,
   },
 });
@@ -26,7 +26,7 @@ transporter.verify(function (error, success) {
 exports.signUpEmail = function(email){    
     try{
         transporter.sendMail({
-            from: "snowcoreg10@outlook.com",
+            from: EMAIL_ADDRESS,
             to: email,
             subject: "Thanks for signing up!",
             text: "Thank you for signing up. Opt in to emails to receive daily weather reports.",
@@ -42,7 +42,7 @@ exports.signUpEmail = function(email){
 exports.weatherReport = function(email){
   try{
     transporter.sendMail({
-        from: "snowcoreg10@outlook.com",
+        from: EMAIL_ADDRESS,
         to: email,
         subject: "It snowed today!",
         text: "It snowed at one of your favourite resorts today!",

@@ -2,7 +2,7 @@ const Resorts = require("../models/Resort");
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const emailService = require('../emailService.js');
-const { off } = require("../models/Resort");
+//const { off } = require("../models/Resort");
 const axios = require("axios");
 require("dotenv").config();
 
@@ -180,6 +180,8 @@ exports.update = async (req, res) => {
         const newUsername= req.body.username;
         const newName= req.body.name; 
         const newEmail= req.body.email; 
+        if (req.body.emailYes) emailOpt = true
+        else emailOpt = false
 
         const userWithProposedEmail = await User.findOne({ email: newEmail })
         if (userWithProposedEmail){
@@ -205,7 +207,8 @@ exports.update = async (req, res) => {
             {$set: {
                 username: newUsername,
                 name: newName,
-                email: newEmail
+                email: newEmail,
+                emailOptIn: emailOpt
             }
         });
 

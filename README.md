@@ -16,4 +16,6 @@ You should receive an email upon signing up with an account. If this does not ha
 ### Seeding the database
 Database is seeded with `seeder.js` using data from the [data](/data) folder.
 
+### PWA
+To make the application installable first ensure that the application can be run locally, thenn comment lines 36-50 out in [serviceworker.js](/public/serviceworker.js).
 

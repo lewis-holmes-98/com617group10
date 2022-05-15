@@ -14,28 +14,15 @@
 
         <main class="container mx-auto mt-8 px-4 pt-6 object-fill max-w-screen-md bg-gray-50">
             <div class="pb-2 text-center">
-                <p class="blog-header-logo text-dark underline">User Info</p>
+                <p class="text-lg underline font-semibold">Admin Controls</p>
             </div>
 
             <div class="">
                 
+                
+        
                 <div class="py-1 text-center">
-                    <p>Number of users:<%= numUsers %></p>
-                </div>
-
-                <div class="py-1 text-center">
-                    <p>Number of admins:<%= numAdmins %></p>
-                </div>
-
-                <div class="py-1 text-center">
-                    <a href="/emailUsers"
-                        class="button py-1 px-3 text-white fo transition duration-300">Email
-                        Users</a>
-                </div>
-            
-
-                <div class="py-1 text-center">
-                    <p>Saves per resort:</p>
+                    <p class="text-lg underline ">Resort Saves:</p>
                 </div>
 
                 <div class="py-2 pl-48">
@@ -60,15 +47,28 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <div class="pb-2 text-center">
+                    <p class="text-lg underline ">User Info</p>
+                </div>
 
-                <div class="py-2 pl-28">
+                <div class="py-1 text-center">
+                    <p>Number of users: <%= numUsers %></p>
+                </div>
+
+                <div class="py-1 text-center">
+                    <p>Number of admins: <%= numAdmins %></p>
+                </div>
+
+                <div class="py-2 pl-16">
                     <table class="table-auto">
                         <thead>
                             <tr>
                                 <th class="px-1 text-center">Username</th>
                                 <th class="px-1 text-center">Name</th>
                                 <th class="px-1 text-center">Email</th>
-                                <th class="px-1 text-center">Actions</th>
+                                <th class="px-1 text-center">On Email List</th>
+                                <th class="px-1 text-center">Actions</th>                                
                             </tr>
                         </thead>
                         <tbody>
@@ -84,13 +84,16 @@
                                         <%= account.email %>
                                     </td>
                                     <td class="px-1 text-center">
+                                        <%= account.emailOptIn %>
+                                    </td>
+                                    <td class="px-2 text-center underline">
                                         <% if(account.level<user.level) { %>
                                             <a href="/users/editUser/<%= account.id %>"
                                                 class="t-sem transition duration-300">Edit
                                                 User
                                             </a>
                                             <% } %>
-                                    </td>
+                                    </td>                                      
                                 </tr>
                                 <%})%>
                         </tbody>

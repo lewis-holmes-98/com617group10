@@ -1,9 +1,10 @@
 const Resorts = require("../models/Resort");
 const Users = require("../models/User");
 
-
+// Shows resort and user data to admin.
 exports.adminControls = async (req, res) => {
     try {
+
         const resorts = await Resorts.find({});
         const users = await Users.find({});
 
@@ -29,7 +30,6 @@ exports.adminControls = async (req, res) => {
             {$unwind:"$resortName"},
             {$addFields:{name:"$resortName.formattedName"}}   
         ])
-
 
         res.render("adminPage", { 
             resorts: resorts, 

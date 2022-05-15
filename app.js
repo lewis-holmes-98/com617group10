@@ -17,18 +17,18 @@ const usersController = require("./controllers/user");
 const savedController = require("./controllers/saved");
 const adminController = require("./controllers/admin");
 
-/* Database */
+/* Database connection*/
 mongoose.connect(MONGODB_URI, { 
     useNewUrlParser: true,
    }).then(() => {
     console.log('Connected to database.');
-  });
+});
   
-  mongoose.connection.on("error", (err) => {
-      console.error(err);
-      console.log("Not connecting to database.");
-      process.exit();
-    });
+mongoose.connection.on("error", (err) => {
+    console.error(err);
+    console.log("Not connecting to database.");
+    process.exit();
+});
 
 
 /* Middleware */
@@ -37,7 +37,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(expressSession({ secret: 'secret database', cookie: { expires: new Date(253402300000000) } }))
-
 
 app.use("*", async (req, res, next) => {
   global.user = false;
@@ -66,25 +65,17 @@ const authEdit = async (req, res, next) => {
 
 
 /* App routes */
+// Home
 app.get("/", resortsController.list);
 
+// Resort page
+app.get("/resort/:id",resortsController.details, (req, res) => {res.render('resort', { errors: {} })});
 
-app.get("/resort/:id",resortsController.details, (req, res) => {
-    res.render('resort', { errors: {} })
-});
-
-
-/* Users */
-app.get("/signup", (req, res) => {
-  res.render('signup', { errors: {} })
-});
-
+// Users
+app.get("/signup", (req, res) => {res.render('signup', { errors: {} })})
 app.post("/signup", usersController.create);
 
-app.get("/login", (req, res) => {
-  res.render('login', { errors: {} })
-});
-
+app.get("/login", (req, res) => {res.render('login', { errors: {} })});
 app.post("/login", usersController.login);
 
 app.get("/logout", async (req, res) => {
@@ -93,32 +84,26 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {
-  res.render('editUser', { errors: {} })
-});
-
+// Edit and delete users
+app.get("/users/editUser/:id",authEdit, usersController.edit, (req, res) => {res.render('editUser', { errors: {} })});
 app.get("/users/userDelete/:id", authEdit, usersController.userDelete);
 app.get("/users/adminDelete/:id",authMiddleware, usersController.adminDelete);
 app.get("/users/makeAdmin/:id",authMiddleware, usersController.makeAdmin);
 app.post("/users/update/:id",authMiddleware, usersController.update);
+app.get("/user/save/:id",usersController.save);
+app.get("/user/unsave/:id",usersController.unsave);
+app.get("/saved/unsave/:id",savedController.unsave);
 
-/* Admin page */
+// Email users route
+app.get("/emailUsers",usersController.weatherReport);
+
+// Admin page
 app.get("/adminPage",authMiddleware, adminController.adminControls);
 
-/* Saved */
+// Saved page
 app.get("/saved", authMiddleware, savedController.list, (req, res) => {
   res.render("saved", { errors: {} });
 });
-
-app.get("/user/unsave/:id",usersController.unsave);
-app.get("/user/save/:id",usersController.save);
-
-app.get("/saved/unsave/:id",savedController.unsave);
-
-
-/*Email Users*/
-app.get("/emailUsers",usersController.weatherReport);
-
 
 /* Local app */
 app.listen(PORT, () => {

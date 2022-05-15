@@ -3,6 +3,8 @@ In this project, the team is tasked with creating an application for a high-end 
 
 Access the [Snowcore App](https://snowcore.herokuapp.com/).
 
+You should receive an email upon signing up with an account. If this does not happen, Outlook has probably detected our email as spam and blocked it from sending.
+
 ## Running the app locally
 1. `npm install`
 2. `npm run seed` if the database has not been seeded already.

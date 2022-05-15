@@ -21,6 +21,6 @@ To make the application installable first ensure that the application can be run
 
 ### Login Details
 
-Default Admin Username: Default-Admin1
+Default Admin Username: Default-Admin1 <br>
 Default Admin Password: set_in_seeder
 

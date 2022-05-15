@@ -64,7 +64,7 @@
             </div>
 
             <div class="md:hidden flex items-center">
-              <button class="outline-none mobile-menu-button">
+              <button class="outline-none mobile-menu-button" onclick="showMobileMenu()">
                 <svg class=" w-6 h-6 text-white bg-slate-500 " x-show="!showMenu" fill="none" strokeLinecap="round"
                   strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M4 6h16M4 12h16M4 18h16"></path>
@@ -74,38 +74,42 @@
           </div>
         </div>
 
-        <div class="hidden mobile-menu">
+        <div class="hidden mobile-menu" id="hiddenMenu">
           <ul class="">
             <li>
               <a href="/"
                 class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
-                Home</a>
+                Resorts</a>
             </li>
-            <li>
-              <a href=""
-                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
-                Map</a>
-            </li>
-            <li>
-              <a href=""
-                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
-                Weather</a>
-            </li>
-            <li>
-              <a href=""
-                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
-                Contact Us</a>
-            </li>
-            <li>
-              <a href="/Login"
-                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
-                Log In</a>
-            </li>
-            <li>
-              <a href="/Signup"
-                class="block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 border-slate-500 hover:text-gray-600 transition duration-300 font-semibold">
-                Sign Up</a>
-            </li>
+            <% if(user) { %>
+              <li><a href="/saved"
+                class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                Saved</a></li>
+              <li><a href="/logout"
+                class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                <%= user.username %> (Logout)</a></li>
+
+              <li><a href="/users/editUser/<%= user.id %>"
+                class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                Account Settings</a></li>
+                            
+            <% }%>
+
+            <% if(!user) { %>
+              <li><a href="/login"
+                    class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                    Login </a></li>
+                <li><a href="/signup" class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                    Register </a></li>
+                  
+            <% } %>
+
+            <% if((user && user.level!==1)) { %>
+              <li><a href="/adminPage"
+                  class="active block text-sm px-2 py-4 text-white bg-slate-500 hover:bg-slate-300 hover:text-gray-600 transition duration-300 font-semibold">
+                  Admin Controls</a></li>
+                
+            <% } %>
           </ul>
         </div>
       </nav>
@@ -119,6 +123,13 @@
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+function showMobileMenu() {
+  var element = document.getElementById("hiddenMenu");
+  element.classList.toggle("hidden");
+}
+</script>
 
 <script>
   $(document).ready(function () {
